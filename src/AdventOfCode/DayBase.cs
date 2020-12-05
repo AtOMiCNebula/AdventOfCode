@@ -9,7 +9,7 @@ namespace NebulousIndustries.AdventOfCode
     {
         public abstract int Number { get; }
 
-        public List<T> GetInput()
+        public IList<T> GetInput()
         {
             string[] lines = File.ReadAllLines($@"Year2020\Inputs\input{this.Number}.txt");
             return lines.Select(l =>

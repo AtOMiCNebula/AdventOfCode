@@ -1,10 +1,13 @@
-﻿using NebulousIndustries.AdventOfCode.Year2020;
+﻿using System;
 
+using NebulousIndustries.AdventOfCode.Year2020;
+
+[assembly: CLSCompliant(true)]
 namespace NebulousIndustries.AdventOfCode
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             var day = new Day5();
             day.Part1();

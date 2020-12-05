@@ -11,13 +11,13 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override void Part1()
         {
-            List<BoardingPass> boardingPasses = this.GetInput();
+            IList<BoardingPass> boardingPasses = this.GetInput();
             Console.WriteLine($"Highest seat ID: {boardingPasses.Max(p => p.SeatID)}");
         }
 
         public override void Part2()
         {
-            List<BoardingPass> boardingPasses = this.GetInput();
+            IList<BoardingPass> boardingPasses = this.GetInput();
             HashSet<int> seatIDs = boardingPasses.Select(p => p.SeatID).ToHashSet();
             IEnumerable<int> allSeatIDs = Enumerable.Range(0, (int)Math.Pow(2, 10) - 1);
             IEnumerable<int> missingSeatIDs = allSeatIDs.Except(seatIDs);
@@ -45,7 +45,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             this.Column = BinarySpacePartition(input.Substring(7, 3), 'L', 'R');
         }
 
-        public int BinarySpacePartition(string partition, char lowerHalfChar, char upperHalfChar)
+        public static int BinarySpacePartition(string partition, char lowerHalfChar, char upperHalfChar)
         {
             int lowerBound = 0;
             int upperBound = (int)Math.Pow(2, partition.Length) - 1;

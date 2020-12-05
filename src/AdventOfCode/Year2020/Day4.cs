@@ -10,17 +10,17 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override void Part1()
         {
-            IEnumerable<Passport> passports = this.ProcessPassports(this.GetInput().Select(p => p.Value));
+            IEnumerable<Passport> passports = ProcessPassports(this.GetInput().Select(p => p.Value));
             Console.WriteLine($"Counted {passports.Where(p => p.IsValidForPart1()).Count()} valid passports (part 1)");
         }
 
         public override void Part2()
         {
-            IEnumerable<Passport> passports = this.ProcessPassports(this.GetInput().Select(p => p.Value));
+            IEnumerable<Passport> passports = ProcessPassports(this.GetInput().Select(p => p.Value));
             Console.WriteLine($"Counted {passports.Where(p => p.IsValidForPart2()).Count()} valid passports (part 2)");
         }
 
-        protected IEnumerable<Passport> ProcessPassports(IEnumerable<string> passportsRaw)
+        protected static IEnumerable<Passport> ProcessPassports(IEnumerable<string> passportsRaw)
         {
             Passport passportCurrent = new Passport();
             List<Passport> passports = new List<Passport>() { passportCurrent };
@@ -107,7 +107,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             {
                 return false;
             }
-            int height = int.Parse(this.Height.Substring(0, this.Height.Length - 2));
+            int height = int.Parse(this.Height[0..(this.Height.Length - 2)]);
             if ((this.Height.EndsWith("cm") && !(150 <= height && height <= 193))
                 || (this.Height.EndsWith("in") && !(59 <= height && height <= 76)))
             {

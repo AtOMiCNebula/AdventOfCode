@@ -10,13 +10,13 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override void Part1()
         {
-            List<Password> passwords = this.GetInput();
+            IList<Password> passwords = this.GetInput();
             Console.WriteLine($"{passwords.Where(p => p.IsValidForPart1()).Count()}");
         }
 
         public override void Part2()
         {
-            List<Password> passwords = this.GetInput();
+            IList<Password> passwords = this.GetInput();
             Console.WriteLine($"{passwords.Where(p => p.IsValidForPart2()).Count()}");
         }
     }
@@ -46,12 +46,12 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public void Load(string input)
         {
-            this.FirstNumber = int.Parse(input.Substring(0, input.IndexOf('-')));
-            input = input.Substring(input.IndexOf('-') + 1);
-            this.SecondNumber = int.Parse(input.Substring(0, input.IndexOf(' ')));
-            input = input.Substring(input.IndexOf(' ') + 1);
+            this.FirstNumber = int.Parse(input[..input.IndexOf('-')]);
+            input = input[(input.IndexOf('-') + 1)..];
+            this.SecondNumber = int.Parse(input[..input.IndexOf(' ')]);
+            input = input[(input.IndexOf(' ') + 1)..];
             this.RequiredCharacter = input[0];
-            input = input.Substring(input.IndexOf(':') + 2);
+            input = input[(input.IndexOf(':') + 2)..];
             this.Value = input;
         }
     }

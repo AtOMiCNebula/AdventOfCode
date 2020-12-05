@@ -10,7 +10,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override void Part1()
         {
-            List<MapLine> mapLines = this.GetInput();
+            IList<MapLine> mapLines = this.GetInput();
 
             int trees = TraverseMap(mapLines, 3, 1);
             Console.WriteLine($"Found {trees} trees");
@@ -18,7 +18,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override void Part2()
         {
-            List<MapLine> mapLines = this.GetInput();
+            IList<MapLine> mapLines = this.GetInput();
 
             long trees1 = TraverseMap(mapLines, 1, 1);
             long trees2 = TraverseMap(mapLines, 3, 1);
@@ -29,7 +29,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             Console.WriteLine($"Found {trees1},{trees2},{trees3},{trees4},{trees5}: {trees1 * trees2 * trees3 * trees4 * trees5}");
         }
 
-        protected int TraverseMap(IEnumerable<MapLine> mapLines, int xIncr, int yIncr)
+        protected static int TraverseMap(IEnumerable<MapLine> mapLines, int xIncr, int yIncr)
         {
             bool first = true;
             int x = 0;
