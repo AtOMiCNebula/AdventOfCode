@@ -24,8 +24,8 @@ namespace NebulousIndustries.AdventOfCode
             }).ToList();
         }
 
-        public abstract void Part1();
+        public abstract long Part1();
 
-        public abstract void Part2();
+        public abstract long Part2();
     }
 }

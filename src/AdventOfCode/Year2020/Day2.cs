@@ -4,7 +4,6 @@
 
 namespace NebulousIndustries.AdventOfCode.Year2020
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -12,16 +11,16 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     {
         public override int Number => 2;
 
-        public override void Part1()
+        public override long Part1()
         {
             IList<Password> passwords = this.GetInput();
-            Console.WriteLine($"{passwords.Where(p => p.IsValidForPart1()).Count()}");
+            return passwords.Where(p => p.IsValidForPart1()).Count();
         }
 
-        public override void Part2()
+        public override long Part2()
         {
             IList<Password> passwords = this.GetInput();
-            Console.WriteLine($"{passwords.Where(p => p.IsValidForPart2()).Count()}");
+            return passwords.Where(p => p.IsValidForPart2()).Count();
         }
     }
 

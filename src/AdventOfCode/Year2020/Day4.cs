@@ -12,16 +12,18 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     {
         public override int Number => 4;
 
-        public override void Part1()
+        public override long Part1()
         {
             IEnumerable<Passport> passports = ProcessPassports(this.GetInput().Select(p => p.Value));
             Console.WriteLine($"Counted {passports.Where(p => p.IsValidForPart1()).Count()} valid passports (part 1)");
+            return passports.Where(p => p.IsValidForPart1()).Count();
         }
 
-        public override void Part2()
+        public override long Part2()
         {
             IEnumerable<Passport> passports = ProcessPassports(this.GetInput().Select(p => p.Value));
             Console.WriteLine($"Counted {passports.Where(p => p.IsValidForPart2()).Count()} valid passports (part 2)");
+            return passports.Where(p => p.IsValidForPart2()).Count();
         }
 
         protected static IEnumerable<Passport> ProcessPassports(IEnumerable<string> passportsRaw)

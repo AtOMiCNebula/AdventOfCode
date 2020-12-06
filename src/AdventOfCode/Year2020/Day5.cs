@@ -13,13 +13,14 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     {
         public override int Number => 5;
 
-        public override void Part1()
+        public override long Part1()
         {
             IList<BoardingPass> boardingPasses = this.GetInput();
             Console.WriteLine($"Highest seat ID: {boardingPasses.Max(p => p.SeatID)}");
+            return boardingPasses.Max(p => p.SeatID);
         }
 
-        public override void Part2()
+        public override long Part2()
         {
             IList<BoardingPass> boardingPasses = this.GetInput();
             HashSet<int> seatIDs = boardingPasses.Select(p => p.SeatID).ToHashSet();
@@ -30,8 +31,11 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                 if (seatIDs.Contains(missingSeatID - 1) && seatIDs.Contains(missingSeatID + 1))
                 {
                     Console.WriteLine($"Found your seatID: {missingSeatID}");
+                    return missingSeatID;
                 }
             }
+
+            return -1;
         }
     }
 

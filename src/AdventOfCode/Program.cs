@@ -2,8 +2,6 @@
 // Copyright (c) Nebulous Industries. All rights reserved.
 // </copyright>
 
-[assembly: System.CLSCompliant(true)]
-
 namespace NebulousIndustries.AdventOfCode
 {
     using System;
@@ -26,8 +24,8 @@ namespace NebulousIndustries.AdventOfCode
             using ServiceProvider provider = collection.BuildServiceProvider();
 
             IDay day = provider.GetServices<IDay>().OrderByDescending(d => d.Number).First();
-            day.Part1();
-            day.Part2();
+            Console.WriteLine($"Part 1 answer: {day.Part1()}");
+            Console.WriteLine($"Part 2 answer: {day.Part2()}");
         }
     }
 }
