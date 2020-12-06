@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿// <copyright file="Day5.cs" company="Nebulous Industries">
+// Copyright (c) Nebulous Industries. All rights reserved.
+// </copyright>
 
 namespace NebulousIndustries.AdventOfCode.Year2020
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+
     public class Day5 : DayBase<BoardingPass>
     {
         public override int Number => 5;
@@ -37,7 +41,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public int Column { get; set; }
 
-        public int SeatID => this.Row * 8 + this.Column;
+        public int SeatID => (this.Row * 8) + this.Column;
 
         public void Load(string input)
         {
@@ -67,7 +71,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                 }
             }
 
-            Debug.Assert(lowerBound == upperBound);
+            Debug.Assert(lowerBound == upperBound, "Expected lowerBound and upperBound to match");
             return lowerBound;
         }
     }

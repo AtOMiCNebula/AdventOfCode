@@ -1,9 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿// <copyright file="Day4.cs" company="Nebulous Industries">
+// Copyright (c) Nebulous Industries. All rights reserved.
+// </copyright>
 
 namespace NebulousIndustries.AdventOfCode.Year2020
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Day4 : DayBase<PassportLine>
     {
         public override int Number => 4;

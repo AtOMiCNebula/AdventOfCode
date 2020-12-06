@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿// <copyright file="DayBase.cs" company="Nebulous Industries">
+// Copyright (c) Nebulous Industries. All rights reserved.
+// </copyright>
 
 namespace NebulousIndustries.AdventOfCode
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+
     public abstract class DayBase<T>
         where T : IDayInput, new()
     {

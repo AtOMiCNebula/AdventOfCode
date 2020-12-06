@@ -11,3 +11,18 @@ dotnet_diagnostic.CA1310.severity = none
 
 # CA1307: Specify StringComparison for clarity
 dotnet_diagnostic.CA1307.severity = none
+
+# SA1131: Use readable conditions
+dotnet_diagnostic.SA1131.severity = none
+
+# SA1204: Static elements should appear before instance elements
+dotnet_diagnostic.SA1204.severity = none
+
+# SA1402: File may only contain a single type
+dotnet_diagnostic.SA1402.severity = none
+
+# SA1513: Closing brace should be followed by blank line
+dotnet_diagnostic.SA1513.severity = none
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = none

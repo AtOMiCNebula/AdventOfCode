@@ -1,10 +1,13 @@
-﻿using System;
+﻿// <copyright file="Program.cs" company="Nebulous Industries">
+// Copyright (c) Nebulous Industries. All rights reserved.
+// </copyright>
 
-using NebulousIndustries.AdventOfCode.Year2020;
+[assembly: System.CLSCompliant(true)]
 
-[assembly: CLSCompliant(true)]
 namespace NebulousIndustries.AdventOfCode
 {
+    using NebulousIndustries.AdventOfCode.Year2020;
+
     public static class Program
     {
         public static void Main()
