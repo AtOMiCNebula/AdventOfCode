@@ -8,7 +8,7 @@ namespace NebulousIndustries.AdventOfCode
     using System.IO;
     using System.Linq;
 
-    public abstract class DayBase<T>
+    public abstract class DayBase<T> : IDay
         where T : IDayInput, new()
     {
         public abstract int Number { get; }
