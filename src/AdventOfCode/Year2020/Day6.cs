@@ -7,66 +7,37 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Day6 : DayBase<CustomsFormLine>
+    public class Day6 : DayBase<CustomsForm>
     {
         public override int Number => 6;
 
         public override long Part1()
         {
-            IEnumerable<CustomsFormLine> customsFormLines = this.GetInput();
-            IEnumerable<CustomsForm> customsForms = ProcessCustomsForms(customsFormLines);
+            IEnumerable<CustomsForm> customsForms = this.GetInput();
             return customsForms.Sum(f => f.QuestionsAnswered.Count);
         }
 
         public override long Part2()
         {
-            IEnumerable<CustomsFormLine> customsFormLines = this.GetInput();
-            IEnumerable<CustomsForm> customsForms = ProcessCustomsForms(customsFormLines);
+            IEnumerable<CustomsForm> customsForms = this.GetInput();
             return customsForms.Sum(f => f.QuestionsAnswered.Where(q => q.Value == f.GroupMembers).Count());
         }
-
-        public static IEnumerable<CustomsForm> ProcessCustomsForms(IEnumerable<CustomsFormLine> customsFormLines)
-        {
-            CustomsForm customsForm = new CustomsForm();
-            List<CustomsForm> customsForms = new List<CustomsForm>() { customsForm };
-            foreach (CustomsFormLine customsFormLine in customsFormLines)
-            {
-                int questionsRead = customsForm.ProcessLine(customsFormLine.Value);
-                if (questionsRead == 0)
-                {
-                    customsForm = new CustomsForm();
-                    customsForms.Add(customsForm);
-                }
-            }
-
-            return customsForms;
-        }
     }
 
-    public class CustomsFormLine : IDayInput
-    {
-        public string Value { get; set; }
-
-        public void Load(string input)
-        {
-            this.Value = input;
-        }
-    }
-
-    public class CustomsForm
+    public class CustomsForm : IDayInput
     {
         public int GroupMembers { get; set; }
 
         public Dictionary<char, int> QuestionsAnswered { get; } = new Dictionary<char, int>();
 
-        public int ProcessLine(string line)
+        public bool Load(string input)
         {
-            if (string.IsNullOrEmpty(line))
+            if (string.IsNullOrEmpty(input))
             {
-                return 0;
+                return false;
             }
 
-            foreach (char questionAnswered in line)
+            foreach (char questionAnswered in input)
             {
                 if (!this.QuestionsAnswered.ContainsKey(questionAnswered))
                 {
@@ -76,7 +47,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             }
 
             this.GroupMembers++;
-            return line.Length;
+            return true;
         }
     }
 }

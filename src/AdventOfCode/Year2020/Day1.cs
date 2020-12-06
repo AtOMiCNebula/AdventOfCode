@@ -8,13 +8,13 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Day1 : DayBase<Expense>
+    public class Day1 : DayBase
     {
         public override int Number => 1;
 
         public override long Part1()
         {
-            List<int> expenses = this.GetInput().Select(e => e.Value).ToList();
+            List<int> expenses = this.GetInputRaw().Select(i => int.Parse(i)).ToList();
             for (int i = 0; i < expenses.Count; i++)
             {
                 for (int j = i + 1; j < expenses.Count; j++)
@@ -33,7 +33,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part2()
         {
-            List<int> expenses = this.GetInput().Select(e => e.Value).ToList();
+            List<int> expenses = this.GetInputRaw().Select(i => int.Parse(i)).ToList();
             for (int i = 0; i < expenses.Count; i++)
             {
                 for (int j = i + 1; j < expenses.Count; j++)
@@ -51,16 +51,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             }
 
             return -1;
-        }
-    }
-
-    public class Expense : IDayInput
-    {
-        public int Value { get; set; }
-
-        public void Load(string input)
-        {
-            this.Value = int.Parse(input);
         }
     }
 }

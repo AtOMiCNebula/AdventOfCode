@@ -6,6 +6,6 @@ namespace NebulousIndustries.AdventOfCode
 {
     public interface IDayInput
     {
-        public void Load(string input);
+        public bool Load(string input);
     }
 }

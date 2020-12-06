@@ -13,13 +13,13 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part1()
         {
-            IList<Password> passwords = this.GetInput();
+            IEnumerable<Password> passwords = this.GetInput();
             return passwords.Where(p => p.IsValidForPart1()).Count();
         }
 
         public override long Part2()
         {
-            IList<Password> passwords = this.GetInput();
+            IEnumerable<Password> passwords = this.GetInput();
             return passwords.Where(p => p.IsValidForPart2()).Count();
         }
     }
@@ -47,7 +47,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             return containsFirst ^ containsSecond;
         }
 
-        public void Load(string input)
+        public bool Load(string input)
         {
             this.FirstNumber = int.Parse(input[..input.IndexOf('-')]);
             input = input[(input.IndexOf('-') + 1)..];
@@ -56,6 +56,8 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             this.RequiredCharacter = input[0];
             input = input[(input.IndexOf(':') + 2)..];
             this.Value = input;
+
+            return false;
         }
     }
 }

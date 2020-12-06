@@ -14,7 +14,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part1()
         {
-            IList<MapLine> mapLines = this.GetInput();
+            IEnumerable<MapLine> mapLines = this.GetInput();
 
             int trees = TraverseMap(mapLines, 3, 1);
             Console.WriteLine($"Found {trees} trees");
@@ -23,7 +23,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part2()
         {
-            IList<MapLine> mapLines = this.GetInput();
+            IEnumerable<MapLine> mapLines = this.GetInput();
 
             long trees1 = TraverseMap(mapLines, 1, 1);
             long trees2 = TraverseMap(mapLines, 3, 1);
@@ -70,9 +70,11 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             return loc == '#';
         }
 
-        public void Load(string input)
+        public bool Load(string input)
         {
             this.LocalGeology = input;
+
+            return false;
         }
     }
 }

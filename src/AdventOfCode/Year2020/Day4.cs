@@ -8,53 +8,26 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Day4 : DayBase<PassportLine>
+    public class Day4 : DayBase<Passport>
     {
         public override int Number => 4;
 
         public override long Part1()
         {
-            IEnumerable<Passport> passports = ProcessPassports(this.GetInput().Select(p => p.Value));
+            IEnumerable<Passport> passports = this.GetInput();
             Console.WriteLine($"Counted {passports.Where(p => p.IsValidForPart1()).Count()} valid passports (part 1)");
             return passports.Where(p => p.IsValidForPart1()).Count();
         }
 
         public override long Part2()
         {
-            IEnumerable<Passport> passports = ProcessPassports(this.GetInput().Select(p => p.Value));
+            IEnumerable<Passport> passports = this.GetInput();
             Console.WriteLine($"Counted {passports.Where(p => p.IsValidForPart2()).Count()} valid passports (part 2)");
             return passports.Where(p => p.IsValidForPart2()).Count();
         }
-
-        protected static IEnumerable<Passport> ProcessPassports(IEnumerable<string> passportsRaw)
-        {
-            Passport passportCurrent = new Passport();
-            List<Passport> passports = new List<Passport>() { passportCurrent };
-            foreach (string passportLine in passportsRaw)
-            {
-                int tuplesRead = passportCurrent.ProcessLine(passportLine);
-                if (tuplesRead == 0)
-                {
-                    passportCurrent = new Passport();
-                    passports.Add(passportCurrent);
-                }
-            }
-
-            return passports;
-        }
     }
 
-    public class PassportLine : IDayInput
-    {
-        public string Value { get; set; }
-
-        public void Load(string input)
-        {
-            this.Value = input;
-        }
-    }
-
-    public class Passport
+    public class Passport : IDayInput
     {
         public string BirthYear { get; set; }
 
@@ -155,14 +128,14 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             return true;
         }
 
-        public int ProcessLine(string line)
+        public bool Load(string input)
         {
-            if (string.IsNullOrEmpty(line))
+            if (string.IsNullOrEmpty(input))
             {
-                return 0;
+                return false;
             }
 
-            string[] splits = line.Split(' ');
+            string[] splits = input.Split(' ');
             foreach (string split in splits)
             {
                 string[] kv = split.Split(':');
@@ -197,7 +170,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                 }
             }
 
-            return splits.Length;
+            return true;
         }
     }
 }
