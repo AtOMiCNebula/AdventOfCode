@@ -1,4 +1,4 @@
-﻿// <copyright file="Day7.cs" company="Nebulous Industries">
+﻿// <copyright file="Day07.cs" company="Nebulous Industries">
 // Copyright (c) Nebulous Industries. All rights reserved.
 // </copyright>
 
@@ -8,7 +8,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Day7 : DayBase<BaggageRule>
+    public class Day07 : DayBase<BaggageRule>
     {
         public override int Number => 7;
 

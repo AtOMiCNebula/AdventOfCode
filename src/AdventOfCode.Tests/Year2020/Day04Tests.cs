@@ -1,4 +1,4 @@
-﻿// <copyright file="Day1Tests.cs" company="Nebulous Industries">
+﻿// <copyright file="Day04Tests.cs" company="Nebulous Industries">
 // Copyright (c) Nebulous Industries. All rights reserved.
 // </copyright>
 
@@ -9,13 +9,13 @@ namespace NebulousIndustries.AdventOfCode.Tests.Year2020
     using NebulousIndustries.AdventOfCode.Year2020;
 
     [TestClass]
-    public class Day1Tests : DayTests<Day1>
+    public class Day04Tests : DayTests<Day04>
     {
         [TestMethod]
         public void TestAnswers()
         {
-            Assert.AreEqual(703131, this.Day.Part1());
-            Assert.AreEqual(272423970, this.Day.Part2());
+            Assert.AreEqual(208, this.Day.Part1());
+            Assert.AreEqual(167, this.Day.Part2());
         }
     }
 }

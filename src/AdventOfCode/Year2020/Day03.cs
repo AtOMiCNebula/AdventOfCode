@@ -1,4 +1,4 @@
-﻿// <copyright file="Day3.cs" company="Nebulous Industries">
+﻿// <copyright file="Day03.cs" company="Nebulous Industries">
 // Copyright (c) Nebulous Industries. All rights reserved.
 // </copyright>
 
@@ -8,7 +8,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Day3 : DayBase<MapLine>
+    public class Day03 : DayBase<MapLine>
     {
         public override int Number => 3;
 

@@ -13,7 +13,7 @@ namespace NebulousIndustries.AdventOfCode
 
         public IEnumerable<string> GetInputRaw()
         {
-            return File.ReadAllLines($@"Year2020\Inputs\input{this.Number}.txt");
+            return File.ReadAllLines($@"Year2020\Inputs\input{this.Number:D2}.txt");
         }
 
         public abstract long Part1();

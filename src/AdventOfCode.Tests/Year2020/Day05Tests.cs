@@ -1,4 +1,4 @@
-﻿// <copyright file="Day5Tests.cs" company="Nebulous Industries">
+﻿// <copyright file="Day05Tests.cs" company="Nebulous Industries">
 // Copyright (c) Nebulous Industries. All rights reserved.
 // </copyright>
 
@@ -9,7 +9,7 @@ namespace NebulousIndustries.AdventOfCode.Tests.Year2020
     using NebulousIndustries.AdventOfCode.Year2020;
 
     [TestClass]
-    public class Day5Tests : DayTests<Day5>
+    public class Day05Tests : DayTests<Day05>
     {
         [TestMethod]
         public void TestAnswers()
