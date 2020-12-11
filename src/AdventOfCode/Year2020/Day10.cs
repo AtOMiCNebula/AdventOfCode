@@ -4,6 +4,7 @@
 
 namespace NebulousIndustries.AdventOfCode.Year2020
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
@@ -35,7 +36,28 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part2()
         {
-            return -1;
+            Dictionary<int, int> groups = new Dictionary<int, int>();
+            IList<int> adapters = this.GetAdapters().ToList();
+
+            int consecutive = 0;
+            for (int i = 1; i < adapters.Count; i++)
+            {
+                if (adapters[i] - adapters[i - 1] == 1)
+                {
+                    consecutive++;
+                }
+                else if (consecutive > 0)
+                {
+                    if (!groups.ContainsKey(consecutive))
+                    {
+                        groups[consecutive] = 0;
+                    }
+                    groups[consecutive]++;
+                    consecutive = 0;
+                }
+            }
+
+            return (long)Math.Pow(2, groups[2]) * (long)Math.Pow(4, groups[3]) * (long)Math.Pow(7, groups[4]);
         }
 
         public IEnumerable<int> GetAdapters()

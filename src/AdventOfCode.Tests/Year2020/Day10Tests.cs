@@ -15,7 +15,7 @@ namespace NebulousIndustries.AdventOfCode.Tests.Year2020
         public void TestAnswers()
         {
             Assert.AreEqual(1700, this.Day.Part1());
-            Assert.AreEqual(-1, this.Day.Part2());
+            Assert.AreEqual(12401793332096, this.Day.Part2());
         }
     }
 }
