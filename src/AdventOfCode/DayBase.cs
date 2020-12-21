@@ -11,9 +11,11 @@ namespace NebulousIndustries.AdventOfCode
     {
         public abstract int Number { get; }
 
+        public string InputFileVariant { get; set; } = string.Empty;
+
         public IEnumerable<string> GetInputRaw()
         {
-            return File.ReadAllLines($@"Year2020\Inputs\input{this.Number:D2}.txt");
+            return File.ReadAllLines($@"Year2020\Inputs\input{this.Number:D2}{this.InputFileVariant}.txt");
         }
 
         public abstract long Part1();

@@ -11,11 +11,8 @@ namespace NebulousIndustries.AdventOfCode.Tests.Year2020
     [TestClass]
     public class Day08Tests : DayTests<Day08>
     {
-        [TestMethod]
-        public void TestAnswers()
-        {
-            Assert.AreEqual(1654, this.Day.Part1());
-            Assert.AreEqual(833, this.Day.Part2());
-        }
+        public override long Part1Answer => 1654;
+
+        public override long Part2Answer => 833;
     }
 }
