@@ -14,39 +14,40 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public override long Part1()
         {
             List<int> numbers = this.GetInputRaw().First().Split(',').Select(int.Parse).ToList();
-            return GetSeries(numbers).Take(2020).Last();
+            return GetResult(numbers, 2020);
         }
 
         public override long Part2()
         {
-            return -1;
+            List<int> numbers = this.GetInputRaw().First().Split(',').Select(int.Parse).ToList();
+            return GetResult(numbers, 30000000);
         }
 
-        public static IEnumerable<int> GetSeries(IList<int> startingNumbers)
+        public static long GetResult(IList<int> startingNumbers, int num)
         {
-            List<int> numbers = new List<int>(startingNumbers);
-            for (int i = 0; i < numbers.Count; i++)
-            {
-                yield return numbers[i];
-            }
-
-            for (int i = numbers.Count; true; i++)
+            int previous = -1;
+            Dictionary<int, (int MostRecent, int Previous)> history = new Dictionary<int, (int MostRecent, int Previous)>();
+            for (int i = 0; i < num; i++)
             {
                 int next;
-                int previous = numbers[i - 1];
-                if (numbers.Count(num => num == previous) == 1)
+                if (i < startingNumbers.Count)
+                {
+                    next = startingNumbers[i];
+                }
+                else if (history[previous].Previous == -1)
                 {
                     next = 0;
                 }
                 else
                 {
-                    int lastIndexOf = numbers.SkipLast(1).ToList().LastIndexOf(previous);
-                    next = i - 1 - lastIndexOf;
+                    next = history[previous].MostRecent - history[previous].Previous;
                 }
 
-                numbers.Add(next);
-                yield return next;
+                history[next] = (i, history.ContainsKey(next) ? history[next].MostRecent : -1);
+                previous = next;
             }
+
+            return previous;
         }
     }
 }
