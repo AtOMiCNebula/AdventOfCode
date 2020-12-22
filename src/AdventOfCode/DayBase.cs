@@ -30,6 +30,7 @@ namespace NebulousIndustries.AdventOfCode
         {
             bool inserted = false;
             T input = new T();
+            input.InitializeNewParse();
             List<T> inputs = new List<T>();
             foreach (string line in this.GetInputRaw())
             {
