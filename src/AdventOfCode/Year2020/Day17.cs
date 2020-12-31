@@ -25,7 +25,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public static long EvaluateCycles<THypercube>(int cycles, IEnumerable<string> initialSlices)
             where THypercube : HypercubeBase, new()
         {
-            HashSet<THypercube> state = new HashSet<THypercube>();
+            ISet<THypercube> state = new SortedSet<THypercube>(HypercubeSorter.Default);
             IList<string> initialSlicesList = initialSlices.ToList();
             for (int y = 0; y < initialSlicesList.Count; y++)
             {
@@ -90,7 +90,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                 }
 
                 // Evaluate new state
-                HashSet<THypercube> newState = new HashSet<THypercube>();
+                ISet<THypercube> newState = new SortedSet<THypercube>(HypercubeSorter.Default);
                 DimensionMultiply(minimums, maximums, hypercube =>
                 {
                     int neighbors = 0;
@@ -145,7 +145,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         }
     }
 
-    public abstract class HypercubeBase : IEquatable<HypercubeBase>
+    public abstract class HypercubeBase
     {
         public abstract int Dimensions { get; }
 
@@ -214,40 +214,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             return result;
         }
 
-        public bool Equals(HypercubeBase other)
-        {
-            if (other == null || this.Dimensions != other.Dimensions)
-            {
-                return false;
-            }
-
-            for (int d = 0; d < this.Dimensions; d++)
-            {
-                if (this[d] != other[d])
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return this.Equals(obj as HypercubeBase);
-        }
-
-        public override int GetHashCode()
-        {
-            int hash = this.Dimensions;
-            for (int d = 0; d < this.Dimensions; d++)
-            {
-                hash *= this[d];
-            }
-
-            return hash;
-        }
-
         public THypercube Clone<THypercube>()
             where THypercube : HypercubeBase
         {
@@ -314,6 +280,30 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                     base[dimension] = value;
                 }
             }
+        }
+    }
+
+    public class HypercubeSorter : IComparer<HypercubeBase>
+    {
+        public static HypercubeSorter Default { get; } = new HypercubeSorter();
+
+        public int Compare(HypercubeBase x, HypercubeBase y)
+        {
+            if (x.Dimensions != y.Dimensions)
+            {
+                return x.Dimensions.CompareTo(y.Dimensions);
+            }
+
+            for (int d = 0; d < x.Dimensions; d++)
+            {
+                int comparison = x[d].CompareTo(y[d]);
+                if (comparison != 0)
+                {
+                    return comparison;
+                }
+            }
+
+            return 0;
         }
     }
 }
