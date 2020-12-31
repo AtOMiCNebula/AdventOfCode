@@ -6,7 +6,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     public class Day17 : DayBase
@@ -15,18 +14,18 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part1()
         {
-            return Day17.EvaluateCycles(6, this.GetInputRaw());
+            return Day17.EvaluateCycles<Hypercube3D>(6, this.GetInputRaw());
         }
 
         public override long Part2()
         {
-            return -1;
+            return Day17.EvaluateCycles<Hypercube4D>(6, this.GetInputRaw());
         }
 
-        [SuppressMessage("Maintainability", "CA1508:Avoid dead conditional code", Justification = "https://github.com/dotnet/roslyn-analyzers/issues/4637")]
-        public static long EvaluateCycles(int cycles, IEnumerable<string> initialSlices)
+        public static long EvaluateCycles<THypercube>(int cycles, IEnumerable<string> initialSlices)
+            where THypercube : HypercubeBase, new()
         {
-            HashSet<(int X, int Y, int Z)> state = new HashSet<(int X, int Y, int Z)>();
+            HashSet<THypercube> state = new HashSet<THypercube>();
             IList<string> initialSlicesList = initialSlices.ToList();
             for (int y = 0; y < initialSlicesList.Count; y++)
             {
@@ -34,7 +33,11 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                 {
                     if (initialSlicesList[y][x] == '#')
                     {
-                        state.Add((x, y, 0));
+                        state.Add(new THypercube
+                        {
+                            X = x,
+                            Y = y,
+                        });
                     }
                 }
             }
@@ -42,86 +45,275 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             for (int i = 0; i < cycles; i++)
             {
                 // Determine coordinate bounds
-                int xMin = int.MaxValue;
-                int xMax = int.MinValue;
-                int yMin = int.MaxValue;
-                int yMax = int.MinValue;
-                int zMin = int.MaxValue;
-                int zMax = int.MinValue;
-                foreach ((int x, int y, int z) in state)
+                THypercube minimums = new THypercube();
+                THypercube maximums = new THypercube();
+                foreach (THypercube hypercube in state)
                 {
-                    xMin = Math.Min(xMin, x);
-                    xMax = Math.Max(xMax, x);
-                    yMin = Math.Min(yMin, y);
-                    yMax = Math.Max(yMax, y);
-                    zMin = Math.Min(zMin, z);
-                    zMax = Math.Max(zMax, z);
+                    minimums.Aggregate(hypercube, Math.Min);
+                    maximums.Aggregate(hypercube, Math.Max);
                 }
 
                 // Print out state
                 /*Console.WriteLine($"Cycle {i}");
-                for (int z = zMin; z <= zMax; z++)
+                DimensionMultiply(minimums, maximums, hypercube =>
                 {
-                    Console.WriteLine($"z={z}");
-                    for (int y = yMin; y <= yMax; y++)
+                    if (hypercube.X == minimums.X && hypercube.Y == minimums.Y)
                     {
-                        for (int x = xMin; x <= xMax; x++)
-                        {
-                            Console.Write(state.Contains((x, y, z)) ? '#' : '.');
-                        }
-                        Console.WriteLine();
+                        Console.WriteLine($"z={(hypercube as Hypercube3D).Z}");
                     }
-                    Console.WriteLine();
-                }*/
+
+                    Console.Write(state.Contains(hypercube) ? '#' : '.');
+
+                    if (hypercube.X == maximums.X)
+                    {
+                        Console.WriteLine();
+                        if (hypercube.Y == maximums.Y)
+                        {
+                            Console.WriteLine();
+                        }
+                    }
+                });*/
 
                 // Increase testing bounds
-                xMin -= 1;
-                xMax += 1;
-                yMin -= 1;
-                yMax += 1;
-                zMin -= 1;
-                zMax += 1;
+                for (int d = 0; d < minimums.Dimensions; d++)
+                {
+                    minimums[d] -= 1;
+                    maximums[d] += 1;
+                }
+
+                THypercube deltaLower = new THypercube();
+                THypercube deltaUpper = new THypercube();
+                for (int d = 0; d < deltaLower.Dimensions; d++)
+                {
+                    deltaLower[d] = -1;
+                    deltaUpper[d] = 1;
+                }
 
                 // Evaluate new state
-                HashSet<(int X, int Y, int Z)> newState = new HashSet<(int X, int Y, int Z)>();
-                for (int z = zMin; z <= zMax; z++)
+                HashSet<THypercube> newState = new HashSet<THypercube>();
+                DimensionMultiply(minimums, maximums, hypercube =>
                 {
-                    for (int y = yMin; y <= yMax; y++)
+                    int neighbors = 0;
+                    DimensionMultiply(deltaLower, deltaUpper, hypercubeDelta =>
                     {
-                        for (int x = xMin; x <= xMax; x++)
+                        if (hypercubeDelta.IsZero())
                         {
-                            int neighbors = 0;
-                            for (int zDelta = -1; zDelta <= 1; zDelta++)
-                            {
-                                for (int yDelta = -1; yDelta <= 1; yDelta++)
-                                {
-                                    for (int xDelta = -1; xDelta <= 1; xDelta++)
-                                    {
-                                        if (zDelta == 0 && yDelta == 0 && xDelta == 0)
-                                        {
-                                            continue;
-                                        }
-
-                                        neighbors += state.Contains((x + xDelta, y + yDelta, z + zDelta)) ? 1 : 0;
-                                    }
-                                }
-                            }
-
-                            if (state.Contains((x, y, z)) && (neighbors == 2 || neighbors == 3))
-                            {
-                                newState.Add((x, y, z));
-                            }
-                            else if (!state.Contains((x, y, z)) && neighbors == 3)
-                            {
-                                newState.Add((x, y, z));
-                            }
+                            return;
                         }
+
+                        THypercube combined = HypercubeBase.Combine(hypercube, hypercubeDelta);
+                        neighbors += state.Contains(combined) ? 1 : 0;
+                    });
+
+                    if (state.Contains(hypercube) && (neighbors == 2 || neighbors == 3))
+                    {
+                        newState.Add(hypercube.Clone<THypercube>());
                     }
-                }
+                    else if (!state.Contains(hypercube) && neighbors == 3)
+                    {
+                        newState.Add(hypercube.Clone<THypercube>());
+                    }
+                });
                 state = newState;
             }
 
             return state.Count;
+        }
+
+        public static void DimensionMultiply<THypercube>(THypercube rangeLower, THypercube rangeUpper, Action<THypercube> action)
+            where THypercube : HypercubeBase, new()
+        {
+            Day17.DimensionMultiply(rangeLower, rangeUpper, action, new THypercube(), rangeLower.Dimensions - 1);
+        }
+
+        public static void DimensionMultiply<THypercube>(THypercube rangeLower, THypercube rangeUpper, Action<THypercube> action, THypercube current, int currentDimension)
+            where THypercube : HypercubeBase
+        {
+            for (int i = rangeLower[currentDimension]; i <= rangeUpper[currentDimension]; i++)
+            {
+                current[currentDimension] = i;
+
+                if (currentDimension == 0)
+                {
+                    action(current);
+                }
+                else
+                {
+                    Day17.DimensionMultiply(rangeLower, rangeUpper, action, current, currentDimension - 1);
+                }
+            }
+        }
+    }
+
+    public abstract class HypercubeBase : IEquatable<HypercubeBase>
+    {
+        public abstract int Dimensions { get; }
+
+        public int X { get; set; }
+
+        public int Y { get; set; }
+
+        public virtual int this[int dimension]
+        {
+            get
+            {
+                return dimension switch
+                {
+                    0 => this.X,
+                    1 => this.Y,
+                    _ => throw new NotSupportedException(),
+                };
+            }
+
+            set
+            {
+                if (dimension == 0)
+                {
+                    this.X = value;
+                }
+                else if (dimension == 1)
+                {
+                    this.Y = value;
+                }
+                else
+                {
+                    throw new NotSupportedException();
+                }
+            }
+        }
+
+        public bool IsZero()
+        {
+            for (int d = 0; d < this.Dimensions; d++)
+            {
+                if (this[d] != 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public void Aggregate(HypercubeBase other, Func<int, int, int> aggregator)
+        {
+            for (int d = 0; d < this.Dimensions; d++)
+            {
+                this[d] = aggregator(this[d], other[d]);
+            }
+        }
+
+        public static THypercube Combine<THypercube>(THypercube left, THypercube right)
+            where THypercube : HypercubeBase, new()
+        {
+            THypercube result = new THypercube();
+            for (int d = 0; d < result.Dimensions; d++)
+            {
+                result[d] = left[d] + right[d];
+            }
+            return result;
+        }
+
+        public bool Equals(HypercubeBase other)
+        {
+            if (other == null || this.Dimensions != other.Dimensions)
+            {
+                return false;
+            }
+
+            for (int d = 0; d < this.Dimensions; d++)
+            {
+                if (this[d] != other[d])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this.Equals(obj as HypercubeBase);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = this.Dimensions;
+            for (int d = 0; d < this.Dimensions; d++)
+            {
+                hash *= this[d];
+            }
+
+            return hash;
+        }
+
+        public THypercube Clone<THypercube>()
+            where THypercube : HypercubeBase
+        {
+            return this.MemberwiseClone() as THypercube;
+        }
+    }
+
+    public class Hypercube3D : HypercubeBase
+    {
+        public override int Dimensions => 3;
+
+        public int Z { get; set; }
+
+        public override int this[int dimension]
+        {
+            get
+            {
+                return dimension switch
+                {
+                    2 => this.Z,
+                    _ => base[dimension],
+                };
+            }
+
+            set
+            {
+                if (dimension == 2)
+                {
+                    this.Z = value;
+                }
+                else
+                {
+                    base[dimension] = value;
+                }
+            }
+        }
+    }
+
+    public class Hypercube4D : Hypercube3D
+    {
+        public override int Dimensions => 4;
+
+        public int W { get; set; }
+
+        public override int this[int dimension]
+        {
+            get
+            {
+                return dimension switch
+                {
+                    3 => this.W,
+                    _ => base[dimension],
+                };
+            }
+
+            set
+            {
+                if (dimension == 3)
+                {
+                    this.W = value;
+                }
+                else
+                {
+                    base[dimension] = value;
+                }
+            }
         }
     }
 }
