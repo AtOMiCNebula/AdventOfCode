@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day13 : DayBase
     {
-        public override int Number => 13;
-
         public override long Part1()
         {
             IEnumerable<string> input = this.GetInputRaw();

@@ -11,8 +11,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day10 : DayBase
     {
-        public override int Number => 10;
-
         public override long Part1()
         {
             IEnumerable<int> adapters = this.GetAdapters();

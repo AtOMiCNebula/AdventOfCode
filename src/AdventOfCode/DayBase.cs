@@ -9,15 +9,27 @@ namespace NebulousIndustries.AdventOfCode
 
     public abstract class DayBase : IDay
     {
-        public abstract int Number { get; }
+        public int Year
+        {
+            get
+            {
+                return int.Parse(this.GetType().Namespace[^4..]);
+            }
+        }
+
+        public int Number
+        {
+            get
+            {
+                return int.Parse(this.GetType().Name[^2..]);
+            }
+        }
 
         public string InputFileVariant { get; set; } = string.Empty;
 
         public IEnumerable<string> GetInputRaw()
         {
-            int year = this.Number > 100 ? this.Number / 100 : 2020;
-            int day = this.Number % 100;
-            return File.ReadAllLines($@"Year{year}\Inputs\input{day:D2}{this.InputFileVariant}.txt");
+            return File.ReadAllLines($@"Year{this.Year}\Inputs\input{this.Number:D2}{this.InputFileVariant}.txt");
         }
 
         public abstract long Part1();

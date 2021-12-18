@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
     public class Day03 : DayBase<SubmarineCommand>
     {
-        public override int Number => 202103;
-
         public override long Part1()
         {
             List<string> diagnostics = this.GetInputRaw().ToList();

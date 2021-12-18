@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day16 : DayBase<TrainTicket>
     {
-        public override int Number => 16;
-
         public override long Part1()
         {
             int ticketScanningErrorRate = 0;

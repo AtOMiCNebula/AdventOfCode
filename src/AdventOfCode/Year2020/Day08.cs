@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day08 : DayBase<Instruction>
     {
-        public override int Number => 8;
-
         public override long Part1()
         {
             List<Instruction> instructions = this.GetInput().ToList();

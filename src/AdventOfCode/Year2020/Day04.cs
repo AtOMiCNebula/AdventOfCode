@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day04 : DayBase<Passport>
     {
-        public override int Number => 4;
-
         public override long Part1()
         {
             IEnumerable<Passport> passports = this.GetInput();

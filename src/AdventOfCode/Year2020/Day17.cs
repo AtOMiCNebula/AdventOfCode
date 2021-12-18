@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day17 : DayBase
     {
-        public override int Number => 17;
-
         public override long Part1()
         {
             return Day17.EvaluateCycles<Hypercube3D>(6, this.GetInputRaw());

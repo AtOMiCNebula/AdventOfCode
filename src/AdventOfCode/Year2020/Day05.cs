@@ -11,8 +11,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day05 : DayBase<BoardingPass>
     {
-        public override int Number => 5;
-
         public override long Part1()
         {
             IEnumerable<BoardingPass> boardingPasses = this.GetInput();

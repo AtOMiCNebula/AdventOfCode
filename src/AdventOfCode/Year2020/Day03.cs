@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day03 : DayBase<MapLine>
     {
-        public override int Number => 3;
-
         public override long Part1()
         {
             IEnumerable<MapLine> mapLines = this.GetInput();

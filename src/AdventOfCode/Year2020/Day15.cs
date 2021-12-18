@@ -9,8 +9,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day15 : DayBase
     {
-        public override int Number => 15;
-
         public override long Part1()
         {
             List<int> numbers = this.GetInputRaw().First().Split(',').Select(int.Parse).ToList();

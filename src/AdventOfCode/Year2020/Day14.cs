@@ -9,8 +9,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day14 : DayBase<MaskedMemory>
     {
-        public override int Number => 14;
-
         public override long Part1()
         {
             IEnumerable<MaskedMemory> instructions = this.GetInput();

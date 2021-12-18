@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Latest day": {
+      "commandName": "Project"
+    },
+    "Latest day in 2021": {
+      "commandName": "Project",
+      "commandLineArgs": "2021"
+    },
+    "Latest day in 2020": {
+      "commandName": "Project",
+      "commandLineArgs": "2020"
+    }
+  }
+}

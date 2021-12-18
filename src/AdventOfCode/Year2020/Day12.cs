@@ -9,8 +9,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day12 : DayBase<NavigationInstruction>
     {
-        public override int Number => 12;
-
         public override long Part1()
         {
             List<NavigationInstruction.NavigationDirection> directionCalculator = new()

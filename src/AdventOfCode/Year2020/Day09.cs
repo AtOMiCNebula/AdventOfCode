@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day09 : DayBase
     {
-        public override int Number => 9;
-
         public static int PreambleLength { get; } = 25;
 
         public override long Part1()

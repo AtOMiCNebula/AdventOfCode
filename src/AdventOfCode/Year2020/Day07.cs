@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day07 : DayBase<BaggageRule>
     {
-        public override int Number => 7;
-
         public override long Part1()
         {
             Dictionary<string, BaggageRule> baggageRules = this.GetInput().ToDictionary(r => r.BagColor);

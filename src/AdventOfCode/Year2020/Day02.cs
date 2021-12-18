@@ -9,8 +9,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day02 : DayBase<Password>
     {
-        public override int Number => 2;
-
         public override long Part1()
         {
             IEnumerable<Password> passwords = this.GetInput();

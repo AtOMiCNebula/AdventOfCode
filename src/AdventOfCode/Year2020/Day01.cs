@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day01 : DayBase
     {
-        public override int Number => 1;
-
         public override long Part1()
         {
             List<int> expenses = this.GetInputRaw().Select(i => int.Parse(i)).ToList();

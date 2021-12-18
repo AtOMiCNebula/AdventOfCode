@@ -10,8 +10,6 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
     public class Day01 : DayBase
     {
-        public override int Number => 202101;
-
         public override long Part1()
         {
             IEnumerable<int> measurements = this.GetInputRaw().Select(i => int.Parse(i));

@@ -9,8 +9,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day06 : DayBase<CustomsForm>
     {
-        public override int Number => 6;
-
         public override long Part1()
         {
             IEnumerable<CustomsForm> customsForms = this.GetInput();

@@ -11,8 +11,6 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day11 : DayBase
     {
-        public override int Number => 11;
-
         public override long Part1()
         {
             return this.CalculateFinalSeatAvailability(4, (map, r, c) => CountAdjacentSeats(map, r, c, 1));
