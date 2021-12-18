@@ -15,7 +15,9 @@ namespace NebulousIndustries.AdventOfCode
 
         public IEnumerable<string> GetInputRaw()
         {
-            return File.ReadAllLines($@"Year2020\Inputs\input{this.Number:D2}{this.InputFileVariant}.txt");
+            int year = this.Number > 100 ? this.Number / 100 : 2020;
+            int day = this.Number % 100;
+            return File.ReadAllLines($@"Year{year}\Inputs\input{day:D2}{this.InputFileVariant}.txt");
         }
 
         public abstract long Part1();
