@@ -30,8 +30,8 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         {
             long result = 1;
             IEnumerable<TrainTicket> validTickets = this.GetInput().Where(t => t.IsValid);
-            List<TrainTicketRule> unassignedRules = new List<TrainTicketRule>(TrainTicket.Rules);
-            List<TrainTicketRule> assignedRules = new List<TrainTicketRule>();
+            List<TrainTicketRule> unassignedRules = new(TrainTicket.Rules);
+            List<TrainTicketRule> assignedRules = new();
             do
             {
                 (TrainTicketRule assignedRule, int assignedIndex) = FindRulePosition(validTickets, unassignedRules, TrainTicket.Rules.Count);

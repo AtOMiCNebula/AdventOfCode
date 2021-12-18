@@ -31,9 +31,9 @@ namespace NebulousIndustries.AdventOfCode
         public IEnumerable<T> GetInput()
         {
             bool inserted = false;
-            T input = new T();
+            T input = new();
             input.InitializeNewParse();
-            List<T> inputs = new List<T>();
+            List<T> inputs = new();
             foreach (string line in this.GetInputRaw())
             {
                 if (!inserted)

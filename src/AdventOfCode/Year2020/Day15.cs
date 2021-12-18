@@ -26,7 +26,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public static long GetResult(IList<int> startingNumbers, int num)
         {
             int previous = -1;
-            Dictionary<int, (int MostRecent, int Previous)> history = new Dictionary<int, (int MostRecent, int Previous)>();
+            Dictionary<int, (int MostRecent, int Previous)> history = new();
             for (int i = 0; i < num; i++)
             {
                 int next;

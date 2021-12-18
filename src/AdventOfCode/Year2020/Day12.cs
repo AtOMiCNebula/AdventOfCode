@@ -13,7 +13,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part1()
         {
-            List<NavigationInstruction.NavigationDirection> directionCalculator = new List<NavigationInstruction.NavigationDirection>
+            List<NavigationInstruction.NavigationDirection> directionCalculator = new()
             {
                 NavigationInstruction.NavigationDirection.North,
                 NavigationInstruction.NavigationDirection.East,

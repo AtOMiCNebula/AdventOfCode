@@ -11,7 +11,7 @@ namespace NebulousIndustries.AdventOfCode.Tests
         public static ServiceProvider GetTestServiceProvider<TDay>()
             where TDay : class, IDay
         {
-            ServiceCollection collection = new ServiceCollection();
+            ServiceCollection collection = new();
             collection.AddTransient<TDay>();
 
             return collection.BuildServiceProvider();

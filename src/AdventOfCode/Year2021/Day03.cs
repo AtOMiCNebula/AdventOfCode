@@ -80,7 +80,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
         protected static IReadOnlyList<int> CountBits(IEnumerable<string> diagnostics)
         {
-            List<int> ones = new List<int>(Enumerable.Repeat(0, diagnostics.First().Length));
+            List<int> ones = new(Enumerable.Repeat(0, diagnostics.First().Length));
             foreach (string diagnostic in diagnostics)
             {
                 for (int i = 0; i < diagnostic.Length; i++)

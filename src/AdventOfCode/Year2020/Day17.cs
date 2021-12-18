@@ -45,8 +45,8 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             for (int i = 0; i < cycles; i++)
             {
                 // Determine coordinate bounds
-                THypercube minimums = new THypercube();
-                THypercube maximums = new THypercube();
+                THypercube minimums = new();
+                THypercube maximums = new();
                 foreach (THypercube hypercube in state)
                 {
                     minimums.Aggregate(hypercube, Math.Min);
@@ -81,8 +81,8 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                     maximums[d] += 1;
                 }
 
-                THypercube deltaLower = new THypercube();
-                THypercube deltaUpper = new THypercube();
+                THypercube deltaLower = new();
+                THypercube deltaUpper = new();
                 for (int d = 0; d < deltaLower.Dimensions; d++)
                 {
                     deltaLower[d] = -1;
@@ -206,7 +206,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public static THypercube Combine<THypercube>(THypercube left, THypercube right)
             where THypercube : HypercubeBase, new()
         {
-            THypercube result = new THypercube();
+            THypercube result = new();
             for (int d = 0; d < result.Dimensions; d++)
             {
                 result[d] = left[d] + right[d];

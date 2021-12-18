@@ -49,7 +49,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public bool Load(string input)
         {
-            this.Row = BinarySpacePartition(input.Substring(0, 7), 'F', 'B');
+            this.Row = BinarySpacePartition(input[..7], 'F', 'B');
             this.Column = BinarySpacePartition(input.Substring(7, 3), 'L', 'R');
 
             return false;

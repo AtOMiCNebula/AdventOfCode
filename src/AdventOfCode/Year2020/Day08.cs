@@ -15,7 +15,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public override long Part1()
         {
             List<Instruction> instructions = this.GetInput().ToList();
-            Simulator simulator = new Simulator();
+            Simulator simulator = new();
 
             simulator.StepUntilDuplicateExecution(instructions);
             return simulator.AccumulatorValue;
@@ -31,7 +31,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                     continue;
                 }
 
-                List<Instruction> instructionsModified = new List<Instruction>(instructions)
+                List<Instruction> instructionsModified = new(instructions)
                 {
                     [i] = new Instruction
                     {
@@ -40,7 +40,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                     },
                 };
 
-                Simulator simulator = new Simulator();
+                Simulator simulator = new();
                 simulator.StepUntilDuplicateExecution(instructionsModified);
                 if (simulator.CurrentInstructionAddress == instructions.Count)
                 {
@@ -84,7 +84,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public void StepUntilDuplicateExecution(IList<Instruction> instructions)
         {
-            HashSet<int> instructionsExecuted = new HashSet<int>();
+            HashSet<int> instructionsExecuted = new();
             for (int i = 0; true; i++)
             {
                 if (instructionsExecuted.Contains(this.CurrentInstructionAddress))

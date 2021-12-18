@@ -14,7 +14,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public override long Part1()
         {
             IEnumerable<MaskedMemory> instructions = this.GetInput();
-            Dictionary<long, long> memory = new Dictionary<long, long>();
+            Dictionary<long, long> memory = new();
             foreach (MaskedMemory instruction in instructions)
             {
                 memory[instruction.Address] = instruction.ValueForPart1;
@@ -26,7 +26,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public override long Part2()
         {
             IEnumerable<MaskedMemory> instructions = this.GetInput();
-            Dictionary<long, long> memory = new Dictionary<long, long>();
+            Dictionary<long, long> memory = new();
             foreach (MaskedMemory instruction in instructions)
             {
                 foreach (long address in instruction.AddressesForPart2)
@@ -69,12 +69,12 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         {
             get
             {
-                List<(long Zeroes, long Ones)> permutations = new List<(long Zeroes, long Ones)>();
+                List<(long Zeroes, long Ones)> permutations = new();
                 for (int i = 35; i >= 0; i--)
                 {
                     if ((this.FloatingMask & (1L << i)) != 0)
                     {
-                        List<(long Zeroes, long Ones)> newPermutations = new List<(long Zeroes, long Ones)>();
+                        List<(long Zeroes, long Ones)> newPermutations = new();
                         if (permutations.Count > 0)
                         {
                             foreach ((long zeroesMask, long onesMask) in permutations)

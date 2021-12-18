@@ -13,7 +13,7 @@ namespace NebulousIndustries.AdventOfCode
     {
         public static void Main()
         {
-            ServiceCollection collection = new ServiceCollection();
+            ServiceCollection collection = new();
 
             // Discover all day instances, and add them to our collection
             foreach (Type dayType in typeof(Program).Assembly.GetTypes().Where(t => t.IsAssignableTo(typeof(IDay)) && !t.IsAbstract))

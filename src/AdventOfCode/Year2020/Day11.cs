@@ -72,10 +72,10 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             {
                 stable = true;
 
-                List<string> newMap = new List<string>();
+                List<string> newMap = new();
                 for (int r = 0; r < map.Count; r++)
                 {
-                    StringBuilder newRow = new StringBuilder();
+                    StringBuilder newRow = new();
 
                     for (int c = 0; c < map[r].Length; c++)
                     {

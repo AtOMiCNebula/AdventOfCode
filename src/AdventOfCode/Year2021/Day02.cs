@@ -60,7 +60,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
         public bool Load(string input)
         {
-            string direction = input.Substring(0, input.IndexOf(' '));
+            string direction = input[..input.IndexOf(' ')];
             this.Direction = direction switch
             {
                 "forward" => SubmarineDirection.Forward,
@@ -69,7 +69,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
                 _ => throw new InvalidOperationException($"Unknown direction '{direction}"),
             };
 
-            this.Distance = int.Parse(input.Substring(input.IndexOf(' ') + 1));
+            this.Distance = int.Parse(input[(input.IndexOf(' ') + 1)..]);
 
             return false;
         }

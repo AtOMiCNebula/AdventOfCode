@@ -16,7 +16,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public override long Part1()
         {
             IEnumerable<int> adapters = this.GetAdapters();
-            Dictionary<int, int> joltageDifferences = new Dictionary<int, int>();
+            Dictionary<int, int> joltageDifferences = new();
             int lastAdapter = adapters.First();
             foreach (int adapter in adapters.Skip(1))
             {
@@ -36,7 +36,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part2()
         {
-            Dictionary<int, int> groups = new Dictionary<int, int>();
+            Dictionary<int, int> groups = new();
             IList<int> adapters = this.GetAdapters().ToList();
 
             int consecutive = 0;
