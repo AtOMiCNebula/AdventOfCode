@@ -6,8 +6,6 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
 
     public class Day05 : DayBase<LineSegment>
     {
@@ -21,15 +19,12 @@ namespace NebulousIndustries.AdventOfCode.Year2021
             return this.CountOverlaps(2, true);
         }
 
-        [SuppressMessage("Performance", "CA1814:Prefer jagged arrays over multidimensional", Justification = "Sheeeeeesh.")]
         protected int CountOverlaps(int threshold, bool allowDiagonals)
         {
             IEnumerable<LineSegment> segments = this.GetInput();
-            int maxY = segments.Max(s => Math.Max(s.Y1, s.Y2)) + 1;
-            int maxX = segments.Max(s => Math.Max(s.X1, s.X2)) + 1;
 
             int overlaps = 0;
-            int[,] grid = new int[maxY, maxX];
+            Dictionary<(int Y, int X), int> grid = new();
             foreach (LineSegment segment in segments)
             {
                 if (!allowDiagonals && segment.X1 != segment.X2 && segment.Y1 != segment.Y2)
@@ -44,8 +39,13 @@ namespace NebulousIndustries.AdventOfCode.Year2021
                 {
                     int yCurrent = segment.Y1 + (yIncr * d);
                     int xCurrent = segment.X1 + (xIncr * d);
-                    grid[yCurrent, xCurrent]++;
-                    if (grid[yCurrent, xCurrent] == threshold)
+                    if (!grid.ContainsKey((yCurrent, xCurrent)))
+                    {
+                        grid[(yCurrent, xCurrent)] = 0;
+                    }
+
+                    grid[(yCurrent, xCurrent)]++;
+                    if (grid[(yCurrent, xCurrent)] == threshold)
                     {
                         overlaps++;
                     }
