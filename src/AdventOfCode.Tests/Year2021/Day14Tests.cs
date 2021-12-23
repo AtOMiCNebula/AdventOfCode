@@ -13,6 +13,6 @@ namespace NebulousIndustries.AdventOfCode.Tests.Year2021
     {
         public override long Part1Answer => 2899;
 
-        public override long Part2Answer => -1;
+        public override long Part2Answer => 3528317079545;
     }
 }
