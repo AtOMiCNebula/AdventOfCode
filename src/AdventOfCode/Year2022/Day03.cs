@@ -13,7 +13,8 @@ namespace NebulousIndustries.AdventOfCode.Year2022
         {
             IEnumerable<Rucksack> rucksacks = this.GetInput();
             return rucksacks
-                .Sum(r => Rucksack.ComputePriority(r.FindDuplicate()));
+                .Select(r => r.FindDuplicate())
+                .Sum(Rucksack.ComputePriority);
         }
 
         public override long Part2()
@@ -21,7 +22,8 @@ namespace NebulousIndustries.AdventOfCode.Year2022
             IEnumerable<Rucksack> rucksacks = this.GetInput();
             return rucksacks
                 .Chunk(3)
-                .Sum(r => Rucksack.ComputePriority(r[0].FindBadge(r[1], r[2])));
+                .Select(r => r[0].FindBadge(r[1], r[2]))
+                .Sum(Rucksack.ComputePriority);
         }
     }
 
