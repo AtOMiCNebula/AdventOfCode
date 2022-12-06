@@ -8,7 +8,13 @@ namespace NebulousIndustries.AdventOfCode.Tests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public abstract class DayTests<TDay>
+    public abstract class DayTests<TDay> : DayTests<TDay, long>
+        where TDay : class, IDay
+    {
+    }
+
+    [TestClass]
+    public abstract class DayTests<TDay, TResult>
         where TDay : class, IDay
     {
         protected DayTests()
@@ -17,9 +23,9 @@ namespace NebulousIndustries.AdventOfCode.Tests
             this.Day = provider.GetRequiredService<TDay>();
         }
 
-        public abstract long Part1Answer { get; }
+        public abstract TResult Part1Answer { get; }
 
-        public abstract long Part2Answer { get; }
+        public abstract TResult Part2Answer { get; }
 
         protected TDay Day { get; }
 

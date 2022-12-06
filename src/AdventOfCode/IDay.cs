@@ -10,8 +10,8 @@ namespace NebulousIndustries.AdventOfCode
 
         public int Number { get; }
 
-        public long Part1();
+        public object Part1();
 
-        public long Part2();
+        public object Part2();
     }
 }
