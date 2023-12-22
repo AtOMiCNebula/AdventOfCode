@@ -3,6 +3,10 @@
     "Latest day": {
       "commandName": "Project"
     },
+    "Latest day in 2022": {
+      "commandName": "Project",
+      "commandLineArgs": "2022"
+    },
     "Latest day in 2021": {
       "commandName": "Project",
       "commandLineArgs": "2021"
