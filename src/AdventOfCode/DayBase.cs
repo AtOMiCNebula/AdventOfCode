@@ -47,7 +47,7 @@ namespace NebulousIndustries.AdventOfCode
             bool inserted = false;
             T input = new();
             input.InitializeNewParse();
-            List<T> inputs = new();
+            List<T> inputs = [];
             foreach (string line in this.GetInputRaw())
             {
                 if (!inserted)

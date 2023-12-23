@@ -52,7 +52,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
             // Handle flashes (and potential cascading)
             Queue<(int Y, int X)> highEnergyOctopi = new();
-            while (flashers.Any())
+            while (flashers.Count > 0)
             {
                 (int yFlash, int xFlash) = flashers.Dequeue();
                 highEnergyOctopi.Enqueue((yFlash, xFlash));
@@ -80,7 +80,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
             }
 
             // Decrease high-energy octopi
-            while (highEnergyOctopi.Any())
+            while (highEnergyOctopi.Count > 0)
             {
                 (int y, int x) = highEnergyOctopi.Dequeue();
                 octopi[y][x] = 0;

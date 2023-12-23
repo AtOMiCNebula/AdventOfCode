@@ -24,7 +24,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
             IEnumerable<LineSegment> segments = this.GetInput();
 
             int overlaps = 0;
-            Dictionary<(int Y, int X), int> grid = new();
+            Dictionary<(int Y, int X), int> grid = [];
             foreach (LineSegment segment in segments)
             {
                 if (!allowDiagonals && segment.X1 != segment.X2 && segment.Y1 != segment.Y2)
@@ -39,11 +39,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
                 {
                     int yCurrent = segment.Y1 + (yIncr * d);
                     int xCurrent = segment.X1 + (xIncr * d);
-                    if (!grid.ContainsKey((yCurrent, xCurrent)))
-                    {
-                        grid[(yCurrent, xCurrent)] = 0;
-                    }
-
+                    grid.TryAdd((yCurrent, xCurrent), 0);
                     grid[(yCurrent, xCurrent)]++;
                     if (grid[(yCurrent, xCurrent)] == threshold)
                     {
@@ -58,6 +54,8 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
     public class LineSegment : IDayInput
     {
+        private static readonly string[] Separators = [",", " -> "];
+
         public int X1 { get; set; }
 
         public int Y1 { get; set; }
@@ -68,7 +66,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
         public bool Load(string input)
         {
-            string[] split = input.Split(new string[] { ",", " -> " }, StringSplitOptions.None);
+            string[] split = input.Split(LineSegment.Separators, StringSplitOptions.None);
             this.X1 = int.Parse(split[0]);
             this.Y1 = int.Parse(split[1]);
             this.X2 = int.Parse(split[2]);

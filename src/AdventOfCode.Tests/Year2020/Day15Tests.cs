@@ -11,6 +11,8 @@ namespace NebulousIndustries.AdventOfCode.Tests.Year2020
     [TestClass]
     public class Day15Tests : DayTests<Day15>
     {
+        private static readonly int[] Part1StartingNumbers = [0, 3, 6];
+
         public override long Part1Answer => 1294;
 
         public override long Part2Answer => 573522;
@@ -28,7 +30,7 @@ namespace NebulousIndustries.AdventOfCode.Tests.Year2020
         [DataRow(10, 0)]
         public void TestPart1Walkthrough(int num, int expectedResult)
         {
-            Assert.AreEqual(expectedResult, Day15.GetResult(new[] { 0, 3, 6 }, num));
+            Assert.AreEqual(expectedResult, Day15.GetResult(Part1StartingNumbers, num));
         }
 
         [TestMethod]

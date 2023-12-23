@@ -23,7 +23,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public static long EvaluateCycles<THypercube>(int cycles, IEnumerable<string> initialSlices)
             where THypercube : HypercubeBase, new()
         {
-            ISet<THypercube> state = new SortedSet<THypercube>(HypercubeSorter.Default);
+            SortedSet<THypercube> state = new(HypercubeSorter.Default);
             IList<string> initialSlicesList = initialSlices.ToList();
             for (int y = 0; y < initialSlicesList.Count; y++)
             {
@@ -88,7 +88,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                 }
 
                 // Evaluate new state
-                ISet<THypercube> newState = new SortedSet<THypercube>(HypercubeSorter.Default);
+                SortedSet<THypercube> newState = new(HypercubeSorter.Default);
                 DimensionMultiply(minimums, maximums, hypercube =>
                 {
                     int neighbors = 0;

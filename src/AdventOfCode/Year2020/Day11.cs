@@ -70,7 +70,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             {
                 stable = true;
 
-                List<string> newMap = new();
+                List<string> newMap = [];
                 for (int r = 0; r < map.Count; r++)
                 {
                     StringBuilder newRow = new();

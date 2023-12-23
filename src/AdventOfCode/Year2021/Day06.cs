@@ -21,7 +21,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
         protected long CountFishAfterDays(int days)
         {
-            List<long> fishes = new() { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            List<long> fishes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
             foreach (int fish in this.GetInputRaw().Single().Split(",").Select(int.Parse))
             {
                 fishes[fish]++;
@@ -29,7 +29,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
             for (int d = 0; d < days; d++)
             {
-                fishes = new() { fishes[1], fishes[2], fishes[3], fishes[4], fishes[5], fishes[6], fishes[7] + fishes[0], fishes[8], fishes[0] };
+                fishes = [fishes[1], fishes[2], fishes[3], fishes[4], fishes[5], fishes[6], fishes[7] + fishes[0], fishes[8], fishes[0]];
             }
 
             return fishes.Sum();

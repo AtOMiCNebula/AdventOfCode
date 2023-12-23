@@ -26,7 +26,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
     {
         public int GroupMembers { get; set; }
 
-        public Dictionary<char, int> QuestionsAnswered { get; } = new Dictionary<char, int>();
+        public Dictionary<char, int> QuestionsAnswered { get; } = [];
 
         public bool Load(string input)
         {
@@ -37,10 +37,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
             foreach (char questionAnswered in input)
             {
-                if (!this.QuestionsAnswered.ContainsKey(questionAnswered))
-                {
-                    this.QuestionsAnswered.Add(questionAnswered, 0);
-                }
+                this.QuestionsAnswered.TryAdd(questionAnswered, 0);
                 this.QuestionsAnswered[questionAnswered]++;
             }
 

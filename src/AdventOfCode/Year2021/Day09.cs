@@ -28,7 +28,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
             List<string> heights = this.GetInputRaw().ToList();
             IList<(int Y, int X)> minimums = FindMinimums(heights);
 
-            List<int> basins = new();
+            List<int> basins = [];
             foreach ((int y, int x) in minimums)
             {
                 int basin = MeasureBasin(heights, y, x, new HashSet<(int Y, int X)>());
@@ -40,7 +40,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
         protected static IList<(int Y, int X)> FindMinimums(IList<string> heights)
         {
-            List<(int Y, int X)> minimums = new();
+            List<(int Y, int X)> minimums = [];
             for (int y = 0; y < heights.Count; y++)
             {
                 for (int x = 0; x < heights[y].Length; x++)

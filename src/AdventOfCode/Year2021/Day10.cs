@@ -38,7 +38,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
         public long CalculateScore(bool scoreCorruptedLines)
         {
             IEnumerable<string> lines = this.GetInputRaw();
-            List<long> scores = new();
+            List<long> scores = [];
             foreach (string line in lines)
             {
                 long score = 0;

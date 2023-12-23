@@ -24,7 +24,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public static long GetResult(IList<int> startingNumbers, int num)
         {
             int previous = -1;
-            Dictionary<int, (int MostRecent, int Previous)> history = new();
+            Dictionary<int, (int MostRecent, int Previous)> history = [];
             for (int i = 0; i < num; i++)
             {
                 int next;
@@ -41,7 +41,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                     next = history[previous].MostRecent - history[previous].Previous;
                 }
 
-                history[next] = (i, history.ContainsKey(next) ? history[next].MostRecent : -1);
+                history[next] = (i, history.TryGetValue(next, out (int MostRecent, int Previous) value) ? value.MostRecent : -1);
                 previous = next;
             }
 

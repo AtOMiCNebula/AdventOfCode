@@ -82,7 +82,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public void StepUntilDuplicateExecution(IList<Instruction> instructions)
         {
-            HashSet<int> instructionsExecuted = new();
+            HashSet<int> instructionsExecuted = [];
             for (int i = 0; true; i++)
             {
                 if (instructionsExecuted.Contains(this.CurrentInstructionAddress))

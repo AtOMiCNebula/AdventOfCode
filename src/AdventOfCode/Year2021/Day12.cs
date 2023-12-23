@@ -26,7 +26,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
             IEnumerable<CavePath> paths = this.GetInput();
             FoundPaths.Clear();
             Cave start = Cave.GetCave("start");
-            CountPaths(paths, start, start, Cave.GetCave("end"), allowOneDoubleVisit, new HashSet<Cave>(), start.Name);
+            CountPaths(paths, start, start, Cave.GetCave("end"), allowOneDoubleVisit, [], start.Name);
             return FoundPaths.Count;
         }
 
@@ -101,11 +101,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
         public static Cave GetCave(string caveName)
         {
-            if (!Caves.ContainsKey(caveName))
-            {
-                Caves.Add(caveName, new Cave(caveName));
-            }
-
+            Caves.TryAdd(caveName, new Cave(caveName));
             return Caves[caveName];
         }
     }

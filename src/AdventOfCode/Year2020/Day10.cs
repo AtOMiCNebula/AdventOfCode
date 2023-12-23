@@ -11,30 +11,29 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
     public class Day10 : DayBase
     {
+        private static readonly int[] AllowableJoltageDifferences = [1, 2, 3];
+
         public override long Part1()
         {
             IEnumerable<int> adapters = this.GetAdapters();
-            Dictionary<int, int> joltageDifferences = new();
+            Dictionary<int, int> joltageDifferences = [];
             int lastAdapter = adapters.First();
             foreach (int adapter in adapters.Skip(1))
             {
                 int joltageDifference = adapter - lastAdapter;
-                if (!joltageDifferences.ContainsKey(joltageDifference))
-                {
-                    joltageDifferences.Add(joltageDifference, 0);
-                }
+                joltageDifferences.TryAdd(joltageDifference, 0);
                 joltageDifferences[joltageDifference]++;
                 lastAdapter = adapter;
             }
 
             Debug.Assert(joltageDifferences.Count <= 3, "Too many joltage differences");
-            Debug.Assert(!joltageDifferences.Keys.Except(new[] { 1, 2, 3 }).Any(), "Unexpected joltage differences");
+            Debug.Assert(!joltageDifferences.Keys.Except(AllowableJoltageDifferences).Any(), "Unexpected joltage differences");
             return joltageDifferences[1] * joltageDifferences[3];
         }
 
         public override long Part2()
         {
-            Dictionary<int, int> groups = new();
+            Dictionary<int, int> groups = [];
             IList<int> adapters = this.GetAdapters().ToList();
 
             int consecutive = 0;
@@ -46,10 +45,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
                 }
                 else if (consecutive > 0)
                 {
-                    if (!groups.ContainsKey(consecutive))
-                    {
-                        groups[consecutive] = 0;
-                    }
+                    groups.TryAdd(consecutive, 0);
                     groups[consecutive]++;
                     consecutive = 0;
                 }

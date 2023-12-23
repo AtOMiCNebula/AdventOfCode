@@ -81,7 +81,7 @@ namespace NebulousIndustries.AdventOfCode.Year2021
 
         public ISet<(int Y, int X)> Fold(ISet<(int Y, int X)> points)
         {
-            HashSet<(int Y, int X)> pointsNew = new();
+            HashSet<(int Y, int X)> pointsNew = [];
             foreach ((int y, int x) in points)
             {
                 if ((this.FoldAlongY && y < this.FoldAt) || (!this.FoldAlongY && x < this.FoldAt))
