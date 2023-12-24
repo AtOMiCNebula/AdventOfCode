@@ -1,4 +1,4 @@
-﻿// <copyright file="Day02Tests.cs" company="Nebulous Industries">
+﻿// <copyright file="Day03Tests.cs" company="Nebulous Industries">
 // Copyright (c) Nebulous Industries. All rights reserved.
 // </copyright>
 
@@ -8,9 +8,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NebulousIndustries.AdventOfCode.Year2023;
 
 [TestClass]
-public class Day02Tests : DayTests<Day02>
+public class Day03Tests : DayTests<Day03>
 {
-    public override long Part1Answer => 2268;
+    public override long Part1Answer => 514969;
 
-    public override long Part2Answer => 63542;
+    public override long Part2Answer => 78915902;
 }
