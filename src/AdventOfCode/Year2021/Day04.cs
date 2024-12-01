@@ -55,11 +55,11 @@
 
     public class BingoCard : IDayInput
     {
-        public static IList<int> Calls { get; } = new List<int>();
+        public static IList<int> Calls { get; } = [];
 
-        public IList<IList<int>> Board { get; } = new List<IList<int>>();
+        public IList<IList<int>> Board { get; } = [];
 
-        public IList<IList<bool>> Marks { get; } = new List<IList<bool>>();
+        public IList<IList<bool>> Marks { get; } = [];
 
         public bool Load(string input)
         {

@@ -15,14 +15,14 @@
         {
             Node[][] nodes = this.GetInputRaw().Select(r => r.Select(c => new Node(c - '0')).ToArray()).ToArray();
 
-            IEnumerable<IEnumerable<Node>> nodesExpanded = Enumerable.Empty<IEnumerable<Node>>();
+            IEnumerable<IEnumerable<Node>> nodesExpanded = [];
             for (int yRepeat = 0; yRepeat < 5; yRepeat++)
             {
                 for (int yIter = 0; yIter < nodes.Length; yIter++)
                 {
                     int y = (yRepeat * nodes.Length) + yIter;
 
-                    IEnumerable<Node> nodesExpandedRow = Enumerable.Empty<Node>();
+                    IEnumerable<Node> nodesExpandedRow = [];
                     for (int xRepeat = 0; xRepeat < 5; xRepeat++)
                     {
                         int offset = yRepeat + xRepeat;

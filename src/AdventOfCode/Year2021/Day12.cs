@@ -93,7 +93,7 @@
 
         public bool AllowsMultipleVisits { get; }
 
-        public IList<Cave> Connections { get; } = new List<Cave>();
+        public IList<Cave> Connections { get; } = [];
 
         public static Cave GetCave(string caveName)
         {

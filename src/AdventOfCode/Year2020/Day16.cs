@@ -59,9 +59,9 @@
 
     public class TrainTicket : IDayInput
     {
-        public static IList<TrainTicketRule> Rules { get; } = new List<TrainTicketRule>();
+        public static IList<TrainTicketRule> Rules { get; } = [];
 
-        public IList<int> Values { get; } = new List<int>();
+        public IList<int> Values { get; } = [];
 
         public IEnumerable<int> InvalidValues
         {

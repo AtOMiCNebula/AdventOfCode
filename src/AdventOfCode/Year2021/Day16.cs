@@ -57,7 +57,7 @@
             _ => throw new InvalidOperationException(),
         };
 
-        public IList<BITSPacket> SubPackets { get; } = new List<BITSPacket>();
+        public IList<BITSPacket> SubPackets { get; } = [];
 
         public void InitializeNewParse()
         {

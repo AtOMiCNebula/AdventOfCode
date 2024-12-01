@@ -38,7 +38,7 @@
         [DataRow(3, 1, 2, 1836)]
         public void TestPart1MoreExamples(int first, int second, int third, int expectedResult)
         {
-            Assert.AreEqual(expectedResult, Day15.GetResult(new[] { first, second, third }, 2020));
+            Assert.AreEqual(expectedResult, Day15.GetResult([first, second, third], 2020));
         }
 
         [TestMethod]
@@ -51,7 +51,7 @@
         [DataRow(3, 1, 2, 362)]
         public void TestPart2MoreExamples(int first, int second, int third, int expectedResult)
         {
-            Assert.AreEqual(expectedResult, Day15.GetResult(new[] { first, second, third }, 30000000));
+            Assert.AreEqual(expectedResult, Day15.GetResult([first, second, third], 30000000));
         }
     }
 }

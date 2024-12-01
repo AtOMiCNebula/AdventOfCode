@@ -20,7 +20,7 @@
 
     public class Elf : IDayInput
     {
-        public IList<int> Food { get; } = new List<int>();
+        public IList<int> Food { get; } = [];
 
         public bool Load(string input)
         {

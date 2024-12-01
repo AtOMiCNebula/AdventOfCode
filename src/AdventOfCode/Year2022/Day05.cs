@@ -44,7 +44,7 @@
     {
         public static bool LoadedBoxes { get; set; }
 
-        public static IList<Stack<char>> SupplyStacks { get; } = new List<Stack<char>>();
+        public static IList<Stack<char>> SupplyStacks { get; } = [];
 
         public int Quantity { get; set; }
 

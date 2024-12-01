@@ -39,9 +39,9 @@
 
     public class SevenSegmentEntry : IDayInput
     {
-        public IList<SevenSegmentValue> SignalPatterns { get; } = new List<SevenSegmentValue>();
+        public IList<SevenSegmentValue> SignalPatterns { get; } = [];
 
-        public IList<SevenSegmentValue> OutputValues { get; } = new List<SevenSegmentValue>();
+        public IList<SevenSegmentValue> OutputValues { get; } = [];
 
         public int ObviousOutputValueCount => this.OutputValues.Count(o => o.IsObviousValue);
 

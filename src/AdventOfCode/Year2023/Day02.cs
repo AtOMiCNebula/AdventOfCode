@@ -33,7 +33,7 @@ public class CubeGameResult : IDayInput
 {
     public int GameID { get; set; }
 
-    public IList<(int Red, int Green, int Blue)> Rolls { get; } = new List<(int Red, int Green, int Blue)>();
+    public IList<(int Red, int Green, int Blue)> Rolls { get; } = [];
 
     public bool Load(string input)
     {

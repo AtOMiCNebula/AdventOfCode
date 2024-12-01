@@ -72,11 +72,11 @@
     {
         public string BagColor { get; set; }
 
-        public IList<BaggageContent> Contents { get; } = new List<BaggageContent>();
+        public IList<BaggageContent> Contents { get; } = [];
 
-        public IList<BaggageRule> ContainsRules { get; } = new List<BaggageRule>();
+        public IList<BaggageRule> ContainsRules { get; } = [];
 
-        public IList<BaggageRule> ContainedByRules { get; } = new List<BaggageRule>();
+        public IList<BaggageRule> ContainedByRules { get; } = [];
 
         public bool Load(string input)
         {
