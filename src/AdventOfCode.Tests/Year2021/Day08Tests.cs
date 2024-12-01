@@ -1,14 +1,11 @@
-﻿namespace NebulousIndustries.AdventOfCode.Tests.Year2021
+﻿using NebulousIndustries.AdventOfCode.Year2021;
+
+namespace NebulousIndustries.AdventOfCode.Tests.Year2021;
+
+[TestClass]
+public class Day08Tests : DayTests<Day08>
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    public override long Part1Answer => 294;
 
-    using NebulousIndustries.AdventOfCode.Year2021;
-
-    [TestClass]
-    public class Day08Tests : DayTests<Day08>
-    {
-        public override long Part1Answer => 294;
-
-        public override long Part2Answer => 973292;
-    }
+    public override long Part2Answer => 973292;
 }

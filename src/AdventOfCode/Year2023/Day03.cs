@@ -1,9 +1,5 @@
 ﻿namespace NebulousIndustries.AdventOfCode.Year2023;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 public class Day03 : DayBase<PartMap>
 {
     public override long Part1()

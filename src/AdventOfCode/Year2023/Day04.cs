@@ -1,9 +1,5 @@
 ﻿namespace NebulousIndustries.AdventOfCode.Year2023;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 public class Day04 : DayBase<ScratchCard>
 {
     public override long Part1()

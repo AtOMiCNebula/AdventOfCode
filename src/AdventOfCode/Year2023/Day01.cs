@@ -1,7 +1,5 @@
 ﻿namespace NebulousIndustries.AdventOfCode.Year2023;
 
-using System.Linq;
-
 public class Day01 : DayBase<CalibrationValue>
 {
     public override long Part1()

@@ -1,11 +1,10 @@
-﻿namespace NebulousIndustries.AdventOfCode
-{
-    public interface IDayInput
-    {
-        public void InitializeNewParse()
-        {
-        }
+﻿namespace NebulousIndustries.AdventOfCode;
 
-        public bool Load(string input);
+public interface IDayInput
+{
+    public void InitializeNewParse()
+    {
     }
+
+    public bool Load(string input);
 }

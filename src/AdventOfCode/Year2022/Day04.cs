@@ -1,52 +1,48 @@
-﻿namespace NebulousIndustries.AdventOfCode.Year2022
+﻿namespace NebulousIndustries.AdventOfCode.Year2022;
+
+public class Day04 : DayBase<SectionAssignment>
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    public class Day04 : DayBase<SectionAssignment>
+    public override long Part1()
     {
-        public override long Part1()
-        {
-            IEnumerable<SectionAssignment> assignments = this.GetInput();
-            return assignments.Count(a => a.FullyContained);
-        }
-
-        public override long Part2()
-        {
-            IEnumerable<SectionAssignment> assignments = this.GetInput();
-            return assignments.Count(a => a.HasOverlap);
-        }
+        IEnumerable<SectionAssignment> assignments = this.GetInput();
+        return assignments.Count(a => a.FullyContained);
     }
 
-    public class SectionAssignment : IDayInput
+    public override long Part2()
     {
-        public int Low1 { get; set; }
+        IEnumerable<SectionAssignment> assignments = this.GetInput();
+        return assignments.Count(a => a.HasOverlap);
+    }
+}
 
-        public int High1 { get; set; }
+public class SectionAssignment : IDayInput
+{
+    public int Low1 { get; set; }
 
-        public int Low2 { get; set; }
+    public int High1 { get; set; }
 
-        public int High2 { get; set; }
+    public int Low2 { get; set; }
 
-        public bool FullyContained => (this.Low1 <= this.Low2 && this.High2 <= this.High1) ||
-                    (this.Low2 <= this.Low1 && this.High1 <= this.High2);
+    public int High2 { get; set; }
 
-        public bool HasOverlap => (this.Low1 <= this.Low2 && this.Low2 <= this.High1) ||
-                    (this.Low1 <= this.High2 && this.High2 <= this.High1) ||
-                    (this.Low2 <= this.Low1 && this.Low1 <= this.High2) ||
-                    (this.Low2 <= this.High1 && this.High1 <= this.High2);
+    public bool FullyContained => (this.Low1 <= this.Low2 && this.High2 <= this.High1) ||
+                (this.Low2 <= this.Low1 && this.High1 <= this.High2);
 
-        public bool Load(string input)
-        {
-            int[] numbers = input
-                .Split('-', ',')
-                .Select(int.Parse)
-                .ToArray();
-            this.Low1 = numbers[0];
-            this.High1 = numbers[1];
-            this.Low2 = numbers[2];
-            this.High2 = numbers[3];
-            return false;
-        }
+    public bool HasOverlap => (this.Low1 <= this.Low2 && this.Low2 <= this.High1) ||
+                (this.Low1 <= this.High2 && this.High2 <= this.High1) ||
+                (this.Low2 <= this.Low1 && this.Low1 <= this.High2) ||
+                (this.Low2 <= this.High1 && this.High1 <= this.High2);
+
+    public bool Load(string input)
+    {
+        int[] numbers = input
+            .Split('-', ',')
+            .Select(int.Parse)
+            .ToArray();
+        this.Low1 = numbers[0];
+        this.High1 = numbers[1];
+        this.Low2 = numbers[2];
+        this.High2 = numbers[3];
+        return false;
     }
 }

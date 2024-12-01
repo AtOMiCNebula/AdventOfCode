@@ -1,37 +1,33 @@
-﻿namespace NebulousIndustries.AdventOfCode.Year2022
+﻿namespace NebulousIndustries.AdventOfCode.Year2022;
+
+public class Day01 : DayBase<Elf>
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    public class Day01 : DayBase<Elf>
+    public override long Part1()
     {
-        public override long Part1()
-        {
-            IEnumerable<Elf> elves = this.GetInput();
-            return elves.Max(e => e.Food.Sum());
-        }
-
-        public override long Part2()
-        {
-            IEnumerable<Elf> elves = this.GetInput();
-            return elves.Select(e => e.Food.Sum()).OrderByDescending(c => c).Take(3).Sum();
-        }
+        IEnumerable<Elf> elves = this.GetInput();
+        return elves.Max(e => e.Food.Sum());
     }
 
-    public class Elf : IDayInput
+    public override long Part2()
     {
-        public IList<int> Food { get; } = [];
+        IEnumerable<Elf> elves = this.GetInput();
+        return elves.Select(e => e.Food.Sum()).OrderByDescending(c => c).Take(3).Sum();
+    }
+}
 
-        public bool Load(string input)
+public class Elf : IDayInput
+{
+    public IList<int> Food { get; } = [];
+
+    public bool Load(string input)
+    {
+        if (string.IsNullOrEmpty(input))
         {
-            if (string.IsNullOrEmpty(input))
-            {
-                return false;
-            }
-
-            int calories = int.Parse(input);
-            this.Food.Add(calories);
-            return true;
+            return false;
         }
+
+        int calories = int.Parse(input);
+        this.Food.Add(calories);
+        return true;
     }
 }

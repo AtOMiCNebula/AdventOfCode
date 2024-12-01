@@ -1,13 +1,12 @@
-﻿namespace NebulousIndustries.AdventOfCode
+﻿namespace NebulousIndustries.AdventOfCode;
+
+public interface IDay
 {
-    public interface IDay
-    {
-        public int Year { get; }
+    public int Year { get; }
 
-        public int Number { get; }
+    public int Number { get; }
 
-        public object Part1();
+    public object Part1();
 
-        public object Part2();
-    }
+    public object Part2();
 }
