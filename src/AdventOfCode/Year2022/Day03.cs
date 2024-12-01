@@ -29,10 +29,7 @@
 
         public string Compartment2 { get; set; }
 
-        public string AllItems
-        {
-            get => string.Concat(this.Compartment1, this.Compartment2);
-        }
+        public string AllItems => string.Concat(this.Compartment1, this.Compartment2);
 
         public bool Load(string input)
         {

@@ -39,21 +39,9 @@
 
         public PlayChoice Opponent { get; set; }
 
-        public Result ExpectedResult
-        {
-            get
-            {
-                return (Result)this.Player;
-            }
-        }
+        public Result ExpectedResult => (Result)this.Player;
 
-        public int ScoreForPart1
-        {
-            get
-            {
-                return Play.Score(this.Player, this.Opponent);
-            }
-        }
+        public int ScoreForPart1 => Play.Score(this.Player, this.Opponent);
 
         public int ScoreForPart2
         {

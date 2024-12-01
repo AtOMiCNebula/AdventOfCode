@@ -78,13 +78,7 @@
             }
         }
 
-        public bool IsValid
-        {
-            get
-            {
-                return !this.InvalidValues.Any();
-            }
-        }
+        public bool IsValid => !this.InvalidValues.Any();
 
         public void InitializeNewParse()
         {

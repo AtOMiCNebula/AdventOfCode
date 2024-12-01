@@ -51,13 +51,7 @@
 
         public long FloatingMask { get; set; }
 
-        public long ValueForPart1
-        {
-            get
-            {
-                return (this.Value & this.ZeroesMask) | this.OnesMask;
-            }
-        }
+        public long ValueForPart1 => (this.Value & this.ZeroesMask) | this.OnesMask;
 
         public IEnumerable<long> AddressesForPart2
         {

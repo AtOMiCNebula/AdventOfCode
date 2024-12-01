@@ -28,27 +28,13 @@
 
         public int High2 { get; set; }
 
-        public bool FullyContained
-        {
-            get
-            {
-                return
-                    (this.Low1 <= this.Low2 && this.High2 <= this.High1) ||
+        public bool FullyContained => (this.Low1 <= this.Low2 && this.High2 <= this.High1) ||
                     (this.Low2 <= this.Low1 && this.High1 <= this.High2);
-            }
-        }
 
-        public bool HasOverlap
-        {
-            get
-            {
-                return
-                    (this.Low1 <= this.Low2 && this.Low2 <= this.High1) ||
+        public bool HasOverlap => (this.Low1 <= this.Low2 && this.Low2 <= this.High1) ||
                     (this.Low1 <= this.High2 && this.High2 <= this.High1) ||
                     (this.Low2 <= this.Low1 && this.Low1 <= this.High2) ||
                     (this.Low2 <= this.High1 && this.High1 <= this.High2);
-            }
-        }
 
         public bool Load(string input)
         {

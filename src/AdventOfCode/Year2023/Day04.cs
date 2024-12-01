@@ -33,15 +33,9 @@ public class ScratchCard : IDayInput
 
     public List<int> Numbers { get; } = [];
 
-    public int Matches { get => this.Numbers.Intersect(this.WinningNumbers).Count(); }
+    public int Matches => this.Numbers.Intersect(this.WinningNumbers).Count();
 
-    public int PointValue
-    {
-        get
-        {
-            return this.Matches > 0 ? (int)Math.Pow(2, this.Matches - 1) : 0;
-        }
-    }
+    public int PointValue => this.Matches > 0 ? (int)Math.Pow(2, this.Matches - 1) : 0;
 
     public bool Load(string input)
     {

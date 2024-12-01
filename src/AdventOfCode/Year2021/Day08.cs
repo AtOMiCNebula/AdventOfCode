@@ -43,7 +43,7 @@
 
         public IList<SevenSegmentValue> OutputValues { get; } = new List<SevenSegmentValue>();
 
-        public int ObviousOutputValueCount { get => this.OutputValues.Count(o => o.IsObviousValue); }
+        public int ObviousOutputValueCount => this.OutputValues.Count(o => o.IsObviousValue);
 
         public bool Load(string input)
         {
@@ -80,17 +80,11 @@
 
         public int Value { get; set; }
 
-        public bool IsObviousValue
+        public bool IsObviousValue => this.SignalValue.Length switch
         {
-            get
-            {
-                return this.SignalValue.Length switch
-                {
-                    2 or 4 or 3 or 7 => true, /* digits 1, 4, 7, 8 */
-                    _ => false,
-                };
-            }
-        }
+            2 or 4 or 3 or 7 => true, /* digits 1, 4, 7, 8 */
+            _ => false,
+        };
 
         public void ComputeValue(string oneSignalValue, string fourSignalValue)
         {

@@ -44,24 +44,18 @@
 
         public int VersionSum => this.Version + this.SubPackets.Sum(p => p.VersionSum);
 
-        public long Value
+        public long Value => this.Type switch
         {
-            get
-            {
-                return this.Type switch
-                {
-                    PacketType.OperatorSum => this.SubPackets.Sum(p => p.Value),
-                    PacketType.OperatorProduct => this.SubPackets.Aggregate(1L, (acc, p) => acc * p.Value),
-                    PacketType.OperatorMinimum => this.SubPackets.Min(p => p.Value),
-                    PacketType.OperatorMaximum => this.SubPackets.Max(p => p.Value),
-                    PacketType.LiteralValue => this.LiteralValue,
-                    PacketType.OperatorGreaterThan => this.SubPackets[0].Value > this.SubPackets[1].Value ? 1 : 0,
-                    PacketType.OperatorLessThan => this.SubPackets[0].Value < this.SubPackets[1].Value ? 1 : 0,
-                    PacketType.OperatorEqualTo => this.SubPackets[0].Value == this.SubPackets[1].Value ? 1 : 0,
-                    _ => throw new InvalidOperationException(),
-                };
-            }
-        }
+            PacketType.OperatorSum => this.SubPackets.Sum(p => p.Value),
+            PacketType.OperatorProduct => this.SubPackets.Aggregate(1L, (acc, p) => acc * p.Value),
+            PacketType.OperatorMinimum => this.SubPackets.Min(p => p.Value),
+            PacketType.OperatorMaximum => this.SubPackets.Max(p => p.Value),
+            PacketType.LiteralValue => this.LiteralValue,
+            PacketType.OperatorGreaterThan => this.SubPackets[0].Value > this.SubPackets[1].Value ? 1 : 0,
+            PacketType.OperatorLessThan => this.SubPackets[0].Value < this.SubPackets[1].Value ? 1 : 0,
+            PacketType.OperatorEqualTo => this.SubPackets[0].Value == this.SubPackets[1].Value ? 1 : 0,
+            _ => throw new InvalidOperationException(),
+        };
 
         public IList<BITSPacket> SubPackets { get; } = new List<BITSPacket>();
 

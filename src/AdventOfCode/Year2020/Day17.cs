@@ -149,15 +149,12 @@
 
         public virtual int this[int dimension]
         {
-            get
+            get => dimension switch
             {
-                return dimension switch
-                {
-                    0 => this.X,
-                    1 => this.Y,
-                    _ => throw new NotSupportedException(),
-                };
-            }
+                0 => this.X,
+                1 => this.Y,
+                _ => throw new NotSupportedException(),
+            };
 
             set
             {
@@ -223,14 +220,11 @@
 
         public override int this[int dimension]
         {
-            get
+            get => dimension switch
             {
-                return dimension switch
-                {
-                    2 => this.Z,
-                    _ => base[dimension],
-                };
-            }
+                2 => this.Z,
+                _ => base[dimension],
+            };
 
             set
             {
@@ -254,14 +248,11 @@
 
         public override int this[int dimension]
         {
-            get
+            get => dimension switch
             {
-                return dimension switch
-                {
-                    3 => this.W,
-                    _ => base[dimension],
-                };
-            }
+                3 => this.W,
+                _ => base[dimension],
+            };
 
             set
             {

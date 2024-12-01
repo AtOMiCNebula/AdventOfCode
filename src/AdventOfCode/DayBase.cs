@@ -15,21 +15,9 @@
     public abstract class DayBase<T, TResult> : IDay
         where T : IDayInput, new()
     {
-        public int Year
-        {
-            get
-            {
-                return int.Parse(this.GetType().Namespace[^4..]);
-            }
-        }
+        public int Year => int.Parse(this.GetType().Namespace[^4..]);
 
-        public int Number
-        {
-            get
-            {
-                return int.Parse(this.GetType().Name[^2..]);
-            }
-        }
+        public int Number => int.Parse(this.GetType().Name[^2..]);
 
         public string InputFileVariant { get; set; } = string.Empty;
 
