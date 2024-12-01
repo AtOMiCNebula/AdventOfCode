@@ -1,12 +1,4 @@
-﻿// <copyright file="Day04.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode.Year2023;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace NebulousIndustries.AdventOfCode.Year2023;
 
 public class Day04 : DayBase<ScratchCard>
 {
@@ -37,15 +29,9 @@ public class ScratchCard : IDayInput
 
     public List<int> Numbers { get; } = [];
 
-    public int Matches { get => this.Numbers.Intersect(this.WinningNumbers).Count(); }
+    public int Matches => this.Numbers.Intersect(this.WinningNumbers).Count();
 
-    public int PointValue
-    {
-        get
-        {
-            return this.Matches > 0 ? (int)Math.Pow(2, this.Matches - 1) : 0;
-        }
-    }
+    public int PointValue => this.Matches > 0 ? (int)Math.Pow(2, this.Matches - 1) : 0;
 
     public bool Load(string input)
     {

@@ -1,11 +1,6 @@
-﻿// <copyright file="Day01Tests.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
+﻿using NebulousIndustries.AdventOfCode.Year2024;
 
 namespace NebulousIndustries.AdventOfCode.Tests.Year2024;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NebulousIndustries.AdventOfCode.Year2024;
 
 [TestClass]
 public class Day01Tests : DayTests<Day01>

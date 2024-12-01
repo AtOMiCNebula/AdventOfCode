@@ -1,10 +1,4 @@
-﻿// <copyright file="Day01.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode.Year2023;
-
-using System.Linq;
+﻿namespace NebulousIndustries.AdventOfCode.Year2023;
 
 public class Day01 : DayBase<CalibrationValue>
 {
@@ -21,14 +15,9 @@ public class Day01 : DayBase<CalibrationValue>
 
 public class CalibrationValue : IDayInput
 {
-    public int Part1Value
-    {
-        get => GetValue(this.Input);
-    }
+    public int Part1Value => GetValue(this.Input);
 
-    public int Part2Value
-    {
-        get => GetValue(this.Input
+    public int Part2Value => GetValue(this.Input
             .Replace("one", "one1one")
             .Replace("two", "two2two")
             .Replace("three", "three3three")
@@ -38,7 +27,6 @@ public class CalibrationValue : IDayInput
             .Replace("seven", "seven7seven")
             .Replace("eight", "eight8eight")
             .Replace("nine", "nine9nine"));
-    }
 
     private string Input { get; set; }
 

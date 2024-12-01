@@ -1,12 +1,4 @@
-﻿// <copyright file="Day02.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode.Year2023;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace NebulousIndustries.AdventOfCode.Year2023;
 
 public class Day02 : DayBase<CubeGameResult>
 {
@@ -37,13 +29,13 @@ public class CubeGameResult : IDayInput
 {
     public int GameID { get; set; }
 
-    public IList<(int Red, int Green, int Blue)> Rolls { get; } = new List<(int Red, int Green, int Blue)>();
+    public IList<(int Red, int Green, int Blue)> Rolls { get; } = [];
 
     public bool Load(string input)
     {
-        this.GameID = int.Parse(input.Split(':')[0].Substring(5));
+        this.GameID = int.Parse(input.Split(':')[0][5..]);
 
-        input = input.Substring(input.IndexOf(": ") + 2);
+        input = input[(input.IndexOf(": ") + 2)..];
         foreach (string round in input.Split(';', StringSplitOptions.TrimEntries))
         {
             int red = 0;

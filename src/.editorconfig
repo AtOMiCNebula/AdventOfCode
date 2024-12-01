@@ -12,20 +12,17 @@ dotnet_diagnostic.CA1310.severity = none
 # CA1307: Specify StringComparison for clarity
 dotnet_diagnostic.CA1307.severity = none
 
-# SA1131: Use readable conditions
-dotnet_diagnostic.SA1131.severity = none
+# CS1591: Missing XML comment for publicly visible type or member
+dotnet_diagnostic.CS1591.severity = none
 
-# SA1204: Static elements should appear before instance elements
-dotnet_diagnostic.SA1204.severity = none
+# IDE0045: Convert to conditional expression
+dotnet_diagnostic.IDE0045.severity = none
 
-# SA1402: File may only contain a single type
-dotnet_diagnostic.SA1402.severity = none
+# IDE0046: Convert to conditional expression
+dotnet_diagnostic.IDE0046.severity = none
 
-# SA1513: Closing brace should be followed by blank line
-dotnet_diagnostic.SA1513.severity = none
+# IDE0047: Remove unnecessary parentheses
+dotnet_diagnostic.IDE0047.severity = none
 
-# SA1600: Elements should be documented
-dotnet_diagnostic.SA1600.severity = none
-
-# SA1602: Enumeration items should be documented
-dotnet_diagnostic.SA1602.severity = none
+# IDE0161: Convert to file scoped namespace
+csharp_style_namespace_declarations = file_scoped

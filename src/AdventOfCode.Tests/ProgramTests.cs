@@ -1,20 +1,16 @@
-﻿// <copyright file="ProgramTests.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
+﻿
+using Microsoft.Extensions.DependencyInjection;
 
-namespace NebulousIndustries.AdventOfCode.Tests
+namespace NebulousIndustries.AdventOfCode.Tests;
+
+public static class ProgramTests
 {
-    using Microsoft.Extensions.DependencyInjection;
-
-    public static class ProgramTests
+    public static ServiceProvider GetTestServiceProvider<TDay>()
+        where TDay : class, IDay
     {
-        public static ServiceProvider GetTestServiceProvider<TDay>()
-            where TDay : class, IDay
-        {
-            ServiceCollection collection = new();
-            collection.AddTransient<TDay>();
+        ServiceCollection collection = new();
+        collection.AddTransient<TDay>();
 
-            return collection.BuildServiceProvider();
-        }
+        return collection.BuildServiceProvider();
     }
 }

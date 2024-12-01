@@ -1,12 +1,4 @@
-﻿// <copyright file="Day03.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode.Year2023;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace NebulousIndustries.AdventOfCode.Year2023;
 
 public class Day03 : DayBase<PartMap>
 {

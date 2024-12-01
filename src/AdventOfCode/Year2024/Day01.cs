@@ -1,12 +1,4 @@
-﻿// <copyright file="Day01.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode.Year2024;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace NebulousIndustries.AdventOfCode.Year2024;
 
 public class Day01 : DayBase<NumberPair>
 {

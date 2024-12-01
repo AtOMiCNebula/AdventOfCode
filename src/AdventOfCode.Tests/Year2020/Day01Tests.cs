@@ -1,18 +1,11 @@
-﻿// <copyright file="Day01Tests.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
+﻿using NebulousIndustries.AdventOfCode.Year2020;
 
-namespace NebulousIndustries.AdventOfCode.Tests.Year2020
+namespace NebulousIndustries.AdventOfCode.Tests.Year2020;
+
+[TestClass]
+public class Day01Tests : DayTests<Day01>
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    public override long Part1Answer => 703131;
 
-    using NebulousIndustries.AdventOfCode.Year2020;
-
-    [TestClass]
-    public class Day01Tests : DayTests<Day01>
-    {
-        public override long Part1Answer => 703131;
-
-        public override long Part2Answer => 272423970;
-    }
+    public override long Part2Answer => 272423970;
 }

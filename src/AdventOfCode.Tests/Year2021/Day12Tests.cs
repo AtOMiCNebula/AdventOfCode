@@ -1,18 +1,11 @@
-﻿// <copyright file="Day12Tests.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
+﻿using NebulousIndustries.AdventOfCode.Year2021;
 
-namespace NebulousIndustries.AdventOfCode.Tests.Year2021
+namespace NebulousIndustries.AdventOfCode.Tests.Year2021;
+
+[TestClass]
+public class Day12Tests : DayTests<Day12>
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    public override long Part1Answer => 4304;
 
-    using NebulousIndustries.AdventOfCode.Year2021;
-
-    [TestClass]
-    public class Day12Tests : DayTests<Day12>
-    {
-        public override long Part1Answer => 4304;
-
-        public override long Part2Answer => 118242;
-    }
+    public override long Part2Answer => 118242;
 }

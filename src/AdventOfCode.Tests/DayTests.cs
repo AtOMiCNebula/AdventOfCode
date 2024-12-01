@@ -1,44 +1,39 @@
-﻿// <copyright file="DayTests.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
+﻿
+using Microsoft.Extensions.DependencyInjection;
 
-namespace NebulousIndustries.AdventOfCode.Tests
+namespace NebulousIndustries.AdventOfCode.Tests;
+
+[TestClass]
+public abstract class DayTests<TDay> : DayTests<TDay, long>
+    where TDay : class, IDay
 {
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+}
 
-    [TestClass]
-    public abstract class DayTests<TDay> : DayTests<TDay, long>
-        where TDay : class, IDay
+[TestClass]
+public abstract class DayTests<TDay, TResult>
+    where TDay : class, IDay
+{
+    protected DayTests()
     {
+        using ServiceProvider provider = ProgramTests.GetTestServiceProvider<TDay>();
+        this.Day = provider.GetRequiredService<TDay>();
     }
 
-    [TestClass]
-    public abstract class DayTests<TDay, TResult>
-        where TDay : class, IDay
+    public abstract TResult Part1Answer { get; }
+
+    public abstract TResult Part2Answer { get; }
+
+    protected TDay Day { get; }
+
+    [TestMethod]
+    public void TestPart1Answer()
     {
-        protected DayTests()
-        {
-            using ServiceProvider provider = ProgramTests.GetTestServiceProvider<TDay>();
-            this.Day = provider.GetRequiredService<TDay>();
-        }
+        Assert.AreEqual(this.Part1Answer, this.Day.Part1());
+    }
 
-        public abstract TResult Part1Answer { get; }
-
-        public abstract TResult Part2Answer { get; }
-
-        protected TDay Day { get; }
-
-        [TestMethod]
-        public void TestPart1Answer()
-        {
-            Assert.AreEqual(this.Part1Answer, this.Day.Part1());
-        }
-
-        [TestMethod]
-        public void TestPart2Answer()
-        {
-            Assert.AreEqual(this.Part2Answer, this.Day.Part2());
-        }
+    [TestMethod]
+    public void TestPart2Answer()
+    {
+        Assert.AreEqual(this.Part2Answer, this.Day.Part2());
     }
 }
