@@ -87,7 +87,7 @@ public class CrateMove : IDayInput
                 {
                     List<char> temp = new(stack);
                     stack.Clear();
-                    temp.ForEach(c => stack.Push(c));
+                    temp.ForEach(stack.Push);
                 }
 
                 CrateMove.LoadedBoxes = true;

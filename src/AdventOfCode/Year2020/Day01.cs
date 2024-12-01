@@ -4,7 +4,7 @@ public class Day01 : DayBase
 {
     public override long Part1()
     {
-        List<int> expenses = this.GetInputRaw().Select(i => int.Parse(i)).ToList();
+        List<int> expenses = this.GetInputRaw().Select(int.Parse).ToList();
         for (int i = 0; i < expenses.Count; i++)
         {
             for (int j = i + 1; j < expenses.Count; j++)
@@ -23,7 +23,7 @@ public class Day01 : DayBase
 
     public override long Part2()
     {
-        List<int> expenses = this.GetInputRaw().Select(i => int.Parse(i)).ToList();
+        List<int> expenses = this.GetInputRaw().Select(int.Parse).ToList();
         for (int i = 0; i < expenses.Count; i++)
         {
             for (int j = i + 1; j < expenses.Count; j++)

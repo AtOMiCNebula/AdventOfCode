@@ -85,8 +85,8 @@ public class SevenSegmentValue
 
     public void ComputeValue(string oneSignalValue, string fourSignalValue)
     {
-        int oneSegmentMatches = this.SignalValue.Count(c => oneSignalValue.Contains(c));
-        int fourSegmentMatches = this.SignalValue.Count(c => fourSignalValue.Contains(c));
+        int oneSegmentMatches = this.SignalValue.Count(oneSignalValue.Contains);
+        int fourSegmentMatches = this.SignalValue.Count(fourSignalValue.Contains);
         if (oneSegmentMatches == 2 && fourSegmentMatches == 3)
         {
             // If this signal contains both segments a 1 has and three segments a 4 has, we must be

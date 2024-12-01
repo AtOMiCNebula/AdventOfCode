@@ -50,7 +50,7 @@ public class Day10 : DayBase
     public IEnumerable<int> GetAdapters()
     {
         IEnumerable<int> adapters = this.GetInputRaw()
-            .Select(i => int.Parse(i))
+            .Select(int.Parse)
             .OrderBy(i => i);
         return adapters.Prepend(0).Append(adapters.Max() + 3);
     }

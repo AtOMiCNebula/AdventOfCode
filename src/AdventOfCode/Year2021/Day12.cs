@@ -82,7 +82,7 @@ public class Cave(string name)
 
     public string Name { get; } = name;
 
-    public bool AllowsMultipleVisits { get; } = name.All(c => char.IsUpper(c));
+    public bool AllowsMultipleVisits { get; } = name.All(char.IsUpper);
 
     public IList<Cave> Connections { get; } = [];
 

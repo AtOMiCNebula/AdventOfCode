@@ -4,13 +4,13 @@ public class Day01 : DayBase
 {
     public override long Part1()
     {
-        IEnumerable<int> measurements = this.GetInputRaw().Select(i => int.Parse(i));
+        IEnumerable<int> measurements = this.GetInputRaw().Select(int.Parse);
         return CountIncreases(measurements);
     }
 
     public override long Part2()
     {
-        List<int> measurements = this.GetInputRaw().Select(i => int.Parse(i)).ToList();
+        List<int> measurements = this.GetInputRaw().Select(int.Parse).ToList();
         IEnumerable<int> slidingMeasurements = Enumerable.Range(2, measurements.Count - 2).Select(i => measurements[i - 2] + measurements[i - 1] + measurements[i]);
         return CountIncreases(slidingMeasurements);
     }
