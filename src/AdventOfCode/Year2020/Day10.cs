@@ -34,7 +34,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public override long Part2()
         {
             Dictionary<int, int> groups = [];
-            IList<int> adapters = this.GetAdapters().ToList();
+            List<int> adapters = this.GetAdapters().ToList();
 
             int consecutive = 0;
             for (int i = 1; i < adapters.Count; i++)

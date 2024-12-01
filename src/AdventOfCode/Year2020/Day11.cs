@@ -64,7 +64,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public int CalculateFinalSeatAvailability(int adjacentLimit, Func<IList<string>, int, int, int> adjacencyCalculator)
         {
             bool stable;
-            IList<string> map = this.GetInputRaw().ToList();
+            List<string> map = this.GetInputRaw().ToList();
 
             do
             {

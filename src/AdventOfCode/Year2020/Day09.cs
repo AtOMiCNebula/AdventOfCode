@@ -14,7 +14,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
 
         public override long Part1()
         {
-            IList<long> numbers = this.GetInputRaw().Select(s => long.Parse(s)).ToList();
+            List<long> numbers = this.GetInputRaw().Select(long.Parse).ToList();
             for (int i = PreambleLength; i < numbers.Count; i++)
             {
                 bool foundSum = false;
@@ -44,7 +44,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
         public override long Part2()
         {
             long invalidNumber = this.Part1();
-            IList<long> numbers = this.GetInputRaw().Select(s => long.Parse(s)).ToList();
+            List<long> numbers = this.GetInputRaw().Select(long.Parse).ToList();
 
             for (int i = PreambleLength; i < numbers.Count; i++)
             {

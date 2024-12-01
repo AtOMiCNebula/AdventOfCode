@@ -24,7 +24,7 @@ namespace NebulousIndustries.AdventOfCode.Year2020
             where THypercube : HypercubeBase, new()
         {
             SortedSet<THypercube> state = new(HypercubeSorter.Default);
-            IList<string> initialSlicesList = initialSlices.ToList();
+            List<string> initialSlicesList = initialSlices.ToList();
             for (int y = 0; y < initialSlicesList.Count; y++)
             {
                 for (int x = 0; x < initialSlicesList[y].Length; x++)
