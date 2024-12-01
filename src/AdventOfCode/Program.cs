@@ -1,8 +1,4 @@
-﻿// <copyright file="Program.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode
+﻿namespace NebulousIndustries.AdventOfCode
 {
     using System;
     using System.Collections.Generic;

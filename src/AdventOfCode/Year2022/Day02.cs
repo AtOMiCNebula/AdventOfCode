@@ -1,8 +1,4 @@
-﻿// <copyright file="Day02.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode.Year2022
+﻿namespace NebulousIndustries.AdventOfCode.Year2022
 {
     using System;
     using System.Collections.Generic;

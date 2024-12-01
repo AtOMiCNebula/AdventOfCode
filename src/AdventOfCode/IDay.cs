@@ -1,8 +1,4 @@
-﻿// <copyright file="IDay.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode
+﻿namespace NebulousIndustries.AdventOfCode
 {
     public interface IDay
     {

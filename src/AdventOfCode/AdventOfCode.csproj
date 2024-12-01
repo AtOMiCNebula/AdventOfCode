@@ -5,12 +5,9 @@
     <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>NebulousIndustries.AdventOfCode</RootNamespace>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
-    <NoWarn>1701;1702;CA1014;SA0001</NoWarn>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
@@ -18,10 +15,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

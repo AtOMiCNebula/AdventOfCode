@@ -1,8 +1,4 @@
-﻿// <copyright file="Day12Tests.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode.Tests.Year2020
+﻿namespace NebulousIndustries.AdventOfCode.Tests.Year2020
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

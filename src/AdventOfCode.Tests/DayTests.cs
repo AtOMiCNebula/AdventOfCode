@@ -1,8 +1,4 @@
-﻿// <copyright file="DayTests.cs" company="Nebulous Industries">
-// Copyright (c) Nebulous Industries. All rights reserved.
-// </copyright>
-
-namespace NebulousIndustries.AdventOfCode.Tests
+﻿namespace NebulousIndustries.AdventOfCode.Tests
 {
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
