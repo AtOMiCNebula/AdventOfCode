@@ -33,9 +33,9 @@ public class CubeGameResult : IDayInput
 
     public bool Load(string input)
     {
-        this.GameID = int.Parse(input.Split(':')[0].Substring(5));
+        this.GameID = int.Parse(input.Split(':')[0][5..]);
 
-        input = input.Substring(input.IndexOf(": ") + 2);
+        input = input[(input.IndexOf(": ") + 2)..];
         foreach (string round in input.Split(';', StringSplitOptions.TrimEntries))
         {
             int red = 0;

@@ -76,19 +76,13 @@ public class CavePath : IDayInput
     }
 }
 
-public class Cave
+public class Cave(string name)
 {
-    public Cave(string name)
-    {
-        this.Name = name;
-        this.AllowsMultipleVisits = name.All(c => char.IsUpper(c));
-    }
-
     public static IDictionary<string, Cave> Caves { get; } = new Dictionary<string, Cave>();
 
-    public string Name { get; }
+    public string Name { get; } = name;
 
-    public bool AllowsMultipleVisits { get; }
+    public bool AllowsMultipleVisits { get; } = name.All(c => char.IsUpper(c));
 
     public IList<Cave> Connections { get; } = [];
 

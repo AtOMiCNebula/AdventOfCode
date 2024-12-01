@@ -16,7 +16,7 @@ public class Day08 : DayBase<Instruction>
         List<Instruction> instructions = this.GetInput().ToList();
         for (int i = 0; i < instructions.Count; i++)
         {
-            if (instructions[i].Opcode != Instruction.Operation.Jump && instructions[i].Opcode != Instruction.Operation.NoOp)
+            if (instructions[i].Opcode is not Instruction.Operation.Jump and not Instruction.Operation.NoOp)
             {
                 continue;
             }

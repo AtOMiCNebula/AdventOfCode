@@ -55,19 +55,19 @@ public class Passport : IDayInput
         }
 
         int birthYear = int.Parse(this.BirthYear);
-        if (!(1920 <= birthYear && birthYear <= 2002))
+        if (birthYear is not (>= 1920 and <= 2002))
         {
             return false;
         }
 
         int issueYear = int.Parse(this.IssueYear);
-        if (!(2010 <= issueYear && issueYear <= 2020))
+        if (issueYear is not (>= 2010 and <= 2020))
         {
             return false;
         }
 
         int expirationYear = int.Parse(this.ExpirationYear);
-        if (!(2020 <= expirationYear && expirationYear <= 2030))
+        if (expirationYear is not (>= 2020 and <= 2030))
         {
             return false;
         }
@@ -89,7 +89,7 @@ public class Passport : IDayInput
         }
         for (int i = 1; i < 7; i++)
         {
-            if (!('0' <= this.HairColor[i] && this.HairColor[i] <= '9') && !('a' <= this.HairColor[i] && this.HairColor[i] <= 'f'))
+            if (this.HairColor[i] is not (>= '0' and <= '9') and not (>= 'a' and <= 'f'))
             {
                 return false;
             }
