@@ -20,7 +20,8 @@ public abstract class DayBase<T, TResult> : IDay
 
     public IEnumerable<string> GetInputRaw()
     {
-        return File.ReadAllLines($@"Year{this.Year}\Inputs\input{this.Number:D2}{this.InputFileVariant}.txt");
+        string repoRoot = Environment.CurrentDirectory[..Environment.CurrentDirectory.LastIndexOf(@"\src\")];
+        return File.ReadAllLines($@"{repoRoot}\data\Year{this.Year}\input{this.Number:D2}{this.InputFileVariant}.txt");
     }
 
     public IEnumerable<T> GetInput()
