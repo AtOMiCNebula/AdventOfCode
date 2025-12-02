@@ -4,22 +4,7 @@ public class Day01 : DayBase<Day01DialInstruction>
 {
     public override long Part1()
     {
-        IEnumerable<Day01DialInstruction> instructions = this.GetInput();
-
-        int zeros = 0;
-        int pos = 50;
-        foreach (Day01DialInstruction instruction in instructions)
-        {
-            pos += (instruction.TurnLeft ? -1 : 1) * instruction.Amount;
-            pos %= 100;
-
-            if (pos == 0)
-            {
-                zeros++;
-            }
-        }
-
-        return zeros;
+        return CountZeros(true);
     }
 
     public override long Part2()
@@ -38,12 +23,7 @@ public class Day01 : DayBase<Day01DialInstruction>
             bool startedAtZero = pos == 0;
             pos += (instruction.TurnLeft ? -1 : 1) * instruction.Amount;
 
-            if (pos == 0)
-            {
-                zeros++;
-                Console.WriteLine("\t+1 (direct)");
-            }
-            else if (pos < 0)
+            if (pos < 0)
             {
                 while (pos < 0)
                 {
@@ -61,12 +41,6 @@ public class Day01 : DayBase<Day01DialInstruction>
                         startedAtZero = false;
                     }
                 }
-
-                if (pos == 0)
-                {
-                    zeros++;
-                    Console.WriteLine("\t+1 (too low direct)");
-                }
             }
             else if (pos >= 100)
             {
@@ -74,12 +48,18 @@ public class Day01 : DayBase<Day01DialInstruction>
                 {
                     pos -= 100;
 
-                    if (!directHitsOnly)
+                    if (!directHitsOnly && pos != 0)
                     {
                         zeros++;
                         Console.WriteLine("\t+1 (too high)");
                     }
                 }
+            }
+
+            if (pos == 0)
+            {
+                zeros++;
+                Console.WriteLine("\t+1 (direct)");
             }
 
             Console.WriteLine(pos);
